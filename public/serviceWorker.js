@@ -13,6 +13,5 @@ self.addEventListener("activate", (event) =>{
 });
 
 self.addEventListener("fetch", (event) =>{
-    logMessage('Fetching something...', event);
     event.respondWith(fetch(event.request));
 });
