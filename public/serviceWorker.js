@@ -2,6 +2,9 @@
 const logMessage = (message, obj) =>{
     console.log(`[Service Worker] ${message}`, obj);
 }
+const cacheVersion = 5;
+const cacheNameStatic = 'static';
+const cacheNameDynamic = 'dynamic';
 
 const cacheTargets = [
     "/",
@@ -18,7 +21,7 @@ self.addEventListener("install", (event) =>{
     logMessage('Installing Service Worker...', event);
     event.waitUntil(
         //Open or create static cache
-        caches.open('static')
+        caches.open(`${cacheNameStatic}-v${cacheVersion}`)
             //Add static items to cache
             .then((cache) => {
                 logMessage('Precaching App Shell');
@@ -29,6 +32,18 @@ self.addEventListener("install", (event) =>{
 
 self.addEventListener("activate", (event) =>{
     logMessage('Activating Service Worker...', event);
+    //delete old caches
+    event.waitUntil(
+        caches.keys()
+            .then((keyList) => {
+                return Promise.all(keyList.map((key) => {
+                    if(key !== `${cacheNameStatic}-v${cacheVersion}` && key !== 'dynamic'){
+                        logMessage('Removing old cache', key);
+                        return caches.delete(key);
+                    }
+                }));
+            })
+    );
     return self.clients.claim();
 });
 
@@ -45,7 +60,7 @@ self.addEventListener("fetch", (event) =>{
                     return fetch(event.request)
                         .then((res) => {
                             //Open or create dynamic cache
-                            return caches.open('dynamic')
+                            return caches.open(cacheNameDynamic)
                                 .then((cache) => {
                                     //Add new resource and return result
                                     cache.put(event.request.url, res);
