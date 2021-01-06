@@ -37,7 +37,7 @@ self.addEventListener("activate", (event) =>{
         caches.keys()
             .then((keyList) => {
                 return Promise.all(keyList.map((key) => {
-                    if(key !== `${cacheNameStatic}-v${cacheVersion}` && key !== 'dynamic'){
+                    if(key !== `${cacheNameStatic}-v${cacheVersion}` && key !== cacheNameDynamic){
                         logMessage('Removing old cache', key);
                         return caches.delete(key);
                     }
