@@ -3,8 +3,27 @@ const logMessage = (message, obj) =>{
     console.log(`[Service Worker] ${message}`, obj);
 }
 
+const cacheTargets = [
+    "/index.html",
+    "/src/App.css",
+    "/static/js/bundle.js",
+    "/static/js/0.chunk.js",
+    "/static/js/main.chunk.js",
+    "/manifest.json",
+    "/images/icons/test-log-144x144.png"
+];
+
 self.addEventListener("install", (event) =>{
     logMessage('Installing Service Worker...', event);
+    event.waitUntil(
+        //Open or create static cache
+        caches.open('static')
+            //Add static items to cache
+            .then((cache) => {
+                logMessage('Precaching App Shell');
+                cache.addAll(cacheTargets);
+            })
+    );
 });
 
 self.addEventListener("activate", (event) =>{
@@ -13,5 +32,14 @@ self.addEventListener("activate", (event) =>{
 });
 
 self.addEventListener("fetch", (event) =>{
-    event.respondWith(fetch(event.request));
+    event.respondWith(
+        caches.match(event.request)
+            .then((response) => {
+                if(response){
+                    return response;
+                }else{
+                    return fetch(event.request);
+                }
+            })
+    )
 });
