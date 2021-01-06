@@ -1,4 +1,26 @@
 import './App.css';
+import React from "react";
+
+let deferredPrompt;
+const createInstallPrompt = () =>{
+    if(deferredPrompt){
+        deferredPrompt.prompt();
+
+        deferredPrompt.userChoice.then((choiceResult) => {
+            console.log(choiceResult.outcome);
+
+            if(choiceResult.outcome === 'dismissed'){
+                console.log('User cancelled installation');
+            }else {
+                console.log('User added to homescreen');
+            }
+        })
+    }else{
+        console.log("No prompt available");
+    }
+    //clear deferredPrompt
+    deferredPrompt = null;
+}
 
 function App() {
   //Register service worker if possible
@@ -8,7 +30,14 @@ function App() {
           .then(() => {
             console.log("Service worker registered");
       });
-  }
+  };
+
+  window.addEventListener("beforeinstallprompt", (event) => {
+      console.log("beforeinstallprompt fired and caught");
+      event.preventDefault();
+      deferredPrompt = event;
+      return false;
+  })
 
   return (
     <div className="App">
