@@ -4,13 +4,13 @@ const logMessage = (message, obj) =>{
 }
 
 const cacheTargets = [
-    "/index.html",
-    "/src/App.css",
+    "/",
     "/static/js/bundle.js",
     "/static/js/0.chunk.js",
     "/static/js/main.chunk.js",
     "/manifest.json",
-    "/images/icons/test-log-144x144.png"
+    "/favicon.ico",
+    "/main"
 ];
 
 self.addEventListener("install", (event) =>{
