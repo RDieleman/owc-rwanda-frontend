@@ -42,6 +42,7 @@ function App() {
   return (
     <div className="App">
       test test
+        <img src='/images/icons/test-logo-144x144.png' alt="test"/>
     </div>
   );
 }

@@ -10,7 +10,8 @@ const cacheTargets = [
     "/static/js/main.chunk.js",
     "/manifest.json",
     "/favicon.ico",
-    "/main"
+    "/main",
+    "/images/icons/test-logo-144x144.png"
 ];
 
 self.addEventListener("install", (event) =>{
@@ -33,12 +34,24 @@ self.addEventListener("activate", (event) =>{
 
 self.addEventListener("fetch", (event) =>{
     event.respondWith(
+        //Try to fetch resource from caches
         caches.match(event.request)
             .then((response) => {
                 if(response){
+                    //Return found resource
                     return response;
                 }else{
-                    return fetch(event.request);
+                    //Fetch new resource
+                    return fetch(event.request)
+                        .then((res) => {
+                            //Open or create dynamic cache
+                            return caches.open('dynamic')
+                                .then((cache) => {
+                                    //Add new resource and return result
+                                    cache.put(event.request.url, res);
+                                    return res;
+                                })
+                        });
                 }
             })
     )
