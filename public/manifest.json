@@ -9,5 +9,11 @@
   "dir": "ltr",
   "lang": "en-US",
   "orientation": "portrait",
-  "icons": []
+  "icons": [
+    {
+      "src": "/images/icons/test-logo-144x144.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    }
+  ]
 }
