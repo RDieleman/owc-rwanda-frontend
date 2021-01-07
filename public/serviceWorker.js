@@ -14,9 +14,11 @@ const cacheTargets = [
     "/static/js/0.chunk.js",
     "/static/js/main.chunk.js",
     "/manifest.json",
-    "/favicon.ico",
     "/main",
-    "/images/icons/test-logo-144x144.png"
+    "/images/icons/favicon.ico",
+    "/images/icons/pwa-192x192.png",
+    "/images/icons/pwa-512x512.png",
+    "https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
 ];
 
 // Service worker install event
