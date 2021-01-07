@@ -9,16 +9,16 @@ const cacheNameDynamic = 'dynamic';
 
 //Targets to cache in the static cache
 const cacheTargets = [
-    "/",
-    "/static/js/bundle.js",
-    "/static/js/0.chunk.js",
-    "/static/js/main.chunk.js",
-    "/manifest.json",
-    "/main",
-    "/images/icons/favicon.ico",
-    "/images/icons/pwa-192x192.png",
-    "/images/icons/pwa-512x512.png",
-    "https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+    // "/",
+    // "/static/js/bundle.js",
+    // "/static/js/0.chunk.js",
+    // "/static/js/main.chunk.js",
+    // "/manifest.json",
+    // "/main",
+    // "/images/icons/favicon.ico",
+    // "/images/icons/pwa-192x192.png",
+    // "/images/icons/pwa-512x512.png",
+    // "https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
 ];
 
 // Service worker install event
@@ -70,7 +70,7 @@ self.addEventListener("fetch", (event) =>{
                             return caches.open(cacheNameDynamic)
                                 .then((cache) => {
                                     //Add new resource and return result
-                                    cache.put(event.request.url, res);
+                                    // cache.put(event.request.url, res); todo: enable caching
                                     return res;
                                 })
                         });
