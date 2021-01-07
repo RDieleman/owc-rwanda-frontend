@@ -2,10 +2,12 @@
 const logMessage = (message, obj) =>{
     console.log(`[Service Worker] ${message}`, obj);
 }
+// Cache info
 const cacheVersion = 5;
 const cacheNameStatic = 'static';
 const cacheNameDynamic = 'dynamic';
 
+//Targets to cache in the static cache
 const cacheTargets = [
     "/",
     "/static/js/bundle.js",
@@ -17,6 +19,7 @@ const cacheTargets = [
     "/images/icons/test-logo-144x144.png"
 ];
 
+// Service worker install event
 self.addEventListener("install", (event) =>{
     logMessage('Installing Service Worker...', event);
     event.waitUntil(
@@ -30,6 +33,7 @@ self.addEventListener("install", (event) =>{
     );
 });
 
+//Service worker activate event
 self.addEventListener("activate", (event) =>{
     logMessage('Activating Service Worker...', event);
     //delete old caches
@@ -47,6 +51,7 @@ self.addEventListener("activate", (event) =>{
     return self.clients.claim();
 });
 
+//Service worker fetch event
 self.addEventListener("fetch", (event) =>{
     event.respondWith(
         //Try to fetch resource from caches
