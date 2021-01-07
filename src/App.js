@@ -1,5 +1,6 @@
 import './App.css';
 import React from "react";
+import Logo from "./logo.svg";
 
 let deferredPrompt;
 const createInstallPrompt = () =>{
@@ -42,7 +43,7 @@ function App() {
   return (
     <div className="App">
       test test
-        <img src='/images/icons/test-logo-144x144.png' alt="test"/>
+        <img src={Logo} alt="test"/>
     </div>
   );
 }
