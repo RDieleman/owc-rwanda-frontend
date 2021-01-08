@@ -5,7 +5,12 @@ import WelcomePage from "./pages/welcome/welcome.page";
 import MenuPage from "./pages/menu/menu.page";
 import {properties} from "./properties";
 import ProjectOverviewPage from "./pages/project-overview/project-overview.page";
-import {handleGetCharities, handleGetProjects, handleGetRecentDonations} from "./services/api.service";
+import {
+    handleGetCharities,
+    handleGetNewsItems,
+    handleGetProjects,
+    handleGetRecentDonations
+} from "./services/api.service";
 import DonationPage from "./pages/donation/donation.page";
 import ProjectDetailPage from "./pages/project-detail/project-detail.page";
 import PaymentResultPage from "./pages/payment-results/payment-result.page";
@@ -22,6 +27,7 @@ class App extends Component {
             projects: [],
             charities: [],
             donations: [],
+            newsItems: [],
 
             selectedProject: null,
 
@@ -44,6 +50,10 @@ class App extends Component {
         this.handleLoadCharities();
         this.handleLoadDonations();
         this.handleLoadProjects();
+
+        handleGetNewsItems().then(d => {
+            this.setState({newsItems: d});
+        })
     }
 
     handleLoadProjects = () => {
@@ -58,7 +68,7 @@ class App extends Component {
         });
     }
 
-    handleLoadCharities = () =>{
+    handleLoadCharities = () => {
         this.setState({currentlyLoading: this.state.currentlyLoading + 1}, () => {
             handleGetCharities().then(
                 d => this.setState(
@@ -70,7 +80,7 @@ class App extends Component {
         });
     }
 
-    handleLoadDonations = () =>{
+    handleLoadDonations = () => {
         this.setState({currentlyLoading: this.state.currentlyLoading + 1}, () => {
             handleGetRecentDonations().then(
                 d => this.setState(
@@ -82,7 +92,7 @@ class App extends Component {
         });
     }
 
-    handleRegisterServiceWorker = () =>{
+    handleRegisterServiceWorker = () => {
         //Register service worker if possible
         if ('serviceWorker' in navigator) {
             this.setState({currentlyLoading: this.state.currentlyLoading + 1}, () => {
@@ -126,10 +136,10 @@ class App extends Component {
         this.setState({selectedProject: project});
     }
 
-    getProject = (id) =>{
+    getProject = (id) => {
         console.log("Project id:", id);
         console.log("Projectssss", this.state.projects)
-        return this.state.projects.find(p =>{
+        return this.state.projects.find(p => {
             return p.id === 3;
         })
     }
@@ -166,7 +176,10 @@ class App extends Component {
                                        {...props}/>}/>
                             <Route exact path={`${properties.ulrPaymentResultPage}/:result`}
                                    component={PaymentResultPage}/>
-                                   <Route path={properties.urlInfoPage} component={InfoPage}/>
+                            <Route path={properties.urlInfoPage}
+                                   render={(props) => <InfoPage
+                                       newsItems={this.state.newsItems}
+                                       {...props}/>}/>
                         </Switch>
                     }
                 </div>

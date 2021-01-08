@@ -40,5 +40,9 @@ export const properties ={
     resultTextFailureSec: "It seems something went wrong during the payment.",
     resultTextSuccessMain: "Amazing!",
     resultTextSuccessSec: "Thank you for your generous support. It goes a long way in helping the youth of Rwanda.",
-    resultTextSuccessThr: "Would you like to leave a message?"
+    resultTextSuccessThr: "Would you like to leave a message?",
+
+    infoTextMain: "Global Radiant Youth is a nonprofit organisation based in Rwanda. We empower youth to be part of positive change through workshops, cultural exchange initiatives and sustainable development programs.",
+    infoTextSec: "The organisation was founded by Dieudonné Gakire after writing his book 'A dreaming child', about the massive impact the 1994 genocide has on Rwanda's youth.",
+    infoTextThr: "In this feed you will be able to follow all of the organisations progress!"
 }

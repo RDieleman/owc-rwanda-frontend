@@ -1,0 +1,13 @@
+.news-item-container{
+    width: 100%;
+    height: auto;
+    background-color: var(--color-sec-medium);
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.news-item-container > img{
+    width: 100%;
+    height: auto;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+}

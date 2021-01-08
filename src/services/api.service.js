@@ -36,3 +36,12 @@ export const handleGetRecentDonations = () =>{
             return response.data;
         });
 };
+
+export const handleGetNewsItems = () =>{
+    console.log("Retrieving news items...");
+    return AXIOS.get('/news')
+        .then(response =>{
+            console.log('News', response.data);
+            return response.data;
+        })
+}
