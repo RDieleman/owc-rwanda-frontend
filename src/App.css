@@ -42,6 +42,15 @@ html, #root{
     height: 100%;
 }
 
+.text-header{
+    width: 100%;
+    font-size: 42pt;
+    font-weight: 700;
+    color: var(--color-main-dark);
+    text-align: left;
+    text-decoration: none;
+}
+
 .text-title{
     width: 100%;
     font-size: 30pt;

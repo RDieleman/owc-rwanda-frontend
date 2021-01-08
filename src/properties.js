@@ -12,6 +12,7 @@ export const properties ={
     ulrPaymentResultPage: "/result",
 
     title: "Icyotero",
+    slogan: "Misfortune breeds blessings",
     currency: "$",
 
     welcomeTextMain: "Welcome!",

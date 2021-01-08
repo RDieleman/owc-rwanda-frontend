@@ -1,0 +1,23 @@
+#loading-info-container{
+    background-color: var(--color-main-light);
+    justify-content: flex-end;
+    flex: 2;
+}
+
+#loading-indicator-container{
+    background-color: var(--color-main-dark);
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 50%;
+}
+
+#logo{
+  height: 70%;
+}
+
+.loading-container{
+    overflow: hidden;
+}

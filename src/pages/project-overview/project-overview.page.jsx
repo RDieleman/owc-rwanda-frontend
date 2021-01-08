@@ -23,7 +23,6 @@ class ProjectOverviewPage extends Component{
     }
 
     render() {
-        console.log("Creating overview for projects:", this.props.projects);
         return(
             <div id="page-container">
                 {/*Header*/}
