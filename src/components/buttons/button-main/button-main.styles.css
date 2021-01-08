@@ -1,0 +1,9 @@
+.button-main{
+    width: 100%;
+    background-color: var(--color-main-medium);
+    color: white;
+    border-radius: 0;
+    text-transform: none;
+    text-align: center;
+    padding: calc(var(--basic-margin) * 0.6) 0;
+}

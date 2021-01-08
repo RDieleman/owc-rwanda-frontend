@@ -1,0 +1,9 @@
+button{
+    border: none;
+    background-color: var(--color-main-light);
+    color: var(--color-main-dark);
+    padding:  calc(var(--basic-margin) * 0.4) var(--basic-margin);
+    text-transform: uppercase;
+    border-radius: var(--border-radius);
+    font-weight: bold;
+}

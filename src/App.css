@@ -1,3 +1,64 @@
-.App{
-    background-color: red;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+:root{
+    /*Global values*/
+    --color-main-dark: #2b454f;
+    --color-main-medium: #359287;
+    --color-main-light: #d0c8a0;
+    --color-attention-dark: #962F18;
+    --color-attention-medium: #E66B19;
+    --color-attention-light: #E87A30;
+    --color-sec-dark: #707070;
+    --color-sec-medium: #F5F5F5;
+    --color-background: #FFFFFF;
+    --color-background-opaque: rgba(0, 0, 0, 0.7);
+    --font: 'Roboto', sans-serif;
+    --header-height: 120pt;
+    --border-width: 1px;
+    --border-radius: 5px;
+    --basic-height: 30pt;
+    --basic-margin: 16pt;
+    --border: solid var(--border-width) var(--color-sec-medium);
 }
+
+*{
+    /*Global settings*/
+    font-family: var(--font);
+}
+
+html, #root{
+    background-color: var(--color-background);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+}
+
+.App{
+    width: 100%;
+    height: 100%;
+}
+
+.text-title{
+    width: 100%;
+    font-size: 30pt;
+    font-weight: 700;
+    color: var(--color-main-light);
+    white-space: nowrap;
+    text-align: left;
+    text-decoration: none;
+}
+
+.text-body{
+    width: 100%;
+    font-size: 20pt;
+    font-weight: 300;
+    color: var(--color-sec-dark);
+    text-align: left;
+    text-decoration: none;
+    word-wrap: break-word;
+    white-space: pre-line;
+}
+
+

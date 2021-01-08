@@ -1,0 +1,7 @@
+.padding-col{
+    height: var(--basic-margin);
+}
+
+.padding-row{
+    width: var(--basic-margin);
+}

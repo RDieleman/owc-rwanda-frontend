@@ -1,6 +1,7 @@
 import './App.css';
 import React from "react";
-import Logo from "./logo.svg";
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {WelcomePage} from "./pages/welcome/welcome.page";
 
 let deferredPrompt;
 const createInstallPrompt = () =>{
@@ -41,10 +42,13 @@ function App() {
   })
 
   return (
-    <div className="App">
-      test test
-        <img src={Logo} alt="test"/>
-    </div>
+      <Router>
+          <div className="App">
+              <Switch>
+                  <Route exact path="/" component={WelcomePage}/>
+              </Switch>
+          </div>
+      </Router>
   );
 }
 
