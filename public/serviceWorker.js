@@ -1,4 +1,5 @@
 /* eslint-disable no-restricted-globals */
+
 const logMessage = (message, obj) =>{
     console.log(`[Service Worker] ${message}`, obj);
 }
@@ -9,16 +10,33 @@ const cacheNameDynamic = 'dynamic';
 
 //Targets to cache in the static cache
 const cacheTargets = [
-    // "/",
-    // "/static/js/bundle.js",
-    // "/static/js/0.chunk.js",
-    // "/static/js/main.chunk.js",
-    // "/manifest.json",
-    // "/main",
-    // "/images/icons/favicon.ico",
-    // "/images/icons/pwa-192x192.png",
-    // "/images/icons/pwa-512x512.png",
-    // "https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+    "/",
+    "/manifest.json",
+    "/static/js/main.chunk.js",
+    "/static/js/bundle.js",
+    "/static/js/0.chunk.js.map",
+    "/static/js/0.chunk.js",
+    "https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap",
+
+    "/images/icons/favicon.ico",
+    "/images/icons/icon-help.svg",
+    "/images/icons/icon-info.svg",
+    "/images/icons/icon-skip.svg",
+    "/images/icons/pwa-192x192.png",
+    "/images/icons/pwa-512x512.png",
+    "/logo.svg",
+
+    "/menu",
+    "/projects",
+    "/project",
+    "/donation",
+    "/result",
+
+    "https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBBc4AMP6lQ.woff2"
+    //
+    // "http://localhost:8080/charity",
+    // "http://localhost:8080/donation",
+    // "http://localhost:8080/project"
 ];
 
 // Service worker install event
@@ -66,13 +84,7 @@ self.addEventListener("fetch", (event) =>{
                     //Fetch new resource
                     return fetch(event.request)
                         .then((res) => {
-                            //Open or create dynamic cache
-                            return caches.open(cacheNameDynamic)
-                                .then((cache) => {
-                                    //Add new resource and return result
-                                    // cache.put(event.request.url, res); todo: enable caching
-                                    return res;
-                                })
+                            return res;
                         });
                 }
             })
