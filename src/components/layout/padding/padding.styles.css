@@ -1,7 +1,9 @@
 .padding-col{
     height: var(--basic-margin);
+    flex-shrink: 0;
 }
 
 .padding-row{
     width: var(--basic-margin);
+    flex-shrink: 0;
 }

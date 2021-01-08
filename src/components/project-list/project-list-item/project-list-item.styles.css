@@ -1,0 +1,18 @@
+.project-list-item-container{
+    width: 100%;
+    height: auto;
+}
+
+.project-list-item-container > img{
+    width: 100%;
+    height: auto;
+}
+
+.project-list-item-title-container{
+    background-color: var(--color-sec-medium);
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.project-list-item-title-padding{
+    height: 10px;
+}

@@ -24,6 +24,8 @@
 *{
     /*Global settings*/
     font-family: var(--font);
+    padding: 0;
+    margin: 0;
 }
 
 html, #root{
@@ -72,13 +74,51 @@ html, #root{
     white-space: pre-line;
 }
 
+.text-body-thr{
+    width: 100%;
+    font-size: 14pt;
+    font-weight: 200;
+    color: var(--color-sec-dark);
+    text-align: left;
+    text-decoration: none;
+    word-wrap: break-word;
+    white-space: pre-line;
+}
+
 #page-container{
     display: flex;
     flex-direction: column;
     align-items: flex-start; /* horizontal */
     justify-content: flex-start; /* vertical */
     height: 100%;
-    overflow: hidden;
+    overflow: auto;
+}
+#page-container > div{
+    width: 100%;
+}
+
+.container-horizontal{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start; /* horizontal */
+    align-items: flex-start; /* vertical */
+    overflow: visible;
+}
+
+.container-horizontal > div{
+    height: 100%;
+}
+
+.container-vertical{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* horizontal */
+    justify-content: flex-start; /* vertical */
+    overflow: visible;
+}
+
+.container-vertical > div{
+    width: 100%;
 }
 
 

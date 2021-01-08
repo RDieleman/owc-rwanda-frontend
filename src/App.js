@@ -3,8 +3,12 @@ import React from "react";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import WelcomePage from "./pages/welcome/welcome.page";
 import MenuPage from "./pages/menu/menu.page";
+import {properties} from "./properties";
+import ProjectOverviewPage from "./pages/project-overview/project-overview.page";
+import {handleGetCharities, handleGetProjects} from "./services/api.service";
 
 let deferredPrompt;
+
 const createInstallPrompt = () =>{
     if(deferredPrompt){
         deferredPrompt.prompt();
@@ -25,8 +29,14 @@ const createInstallPrompt = () =>{
     deferredPrompt = null;
 }
 
+let projects = [];
+let charities = [];
+
 function App() {
   //Register service worker if possible
+    handleGetProjects().then(d => projects = d);
+    handleGetCharities().then(d => charities = d);
+
   if('serviceWorker' in navigator){
       navigator.serviceWorker
           .register("/serviceWorker.js")
@@ -47,7 +57,12 @@ function App() {
           <div className="App">
               <Switch>
                   <Route exact path="/" component={WelcomePage}/>
-                  <Route exact path="/menu" component={MenuPage}/>
+                  <Route path={properties.urlMenuPage} component={MenuPage}/>
+                  <Route path={properties.urlProjectOverviewPage}
+                  render={(props) => <ProjectOverviewPage
+                      projects={projects}
+                      charities={charities}
+                      {...props}/>}/>
               </Switch>
           </div>
       </Router>

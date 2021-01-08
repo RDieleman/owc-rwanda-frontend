@@ -1,0 +1,20 @@
+.charity-list-item-container > img{
+    width: 20%;
+    height: auto;
+    flex-grow: 0;
+    background-color: red;
+    padding: 0;
+}
+
+.charity-list-item-info-container{
+    flex: 1;
+}
+
+.charity-list-item-padding-main{
+    width: 10px;
+    height: 5px;
+}
+
+.charity-list-item-padding-sec{
+    height: 10px;
+}
