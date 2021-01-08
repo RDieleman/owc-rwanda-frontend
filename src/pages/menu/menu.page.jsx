@@ -17,7 +17,7 @@ class MenuPage extends Component {
     }
 
     handleInfoClick = () => {
-        console.log("info button clicked")
+        this.props.history.push(properties.urlInfoPage);
     }
 
     handleDonateClick = () => {

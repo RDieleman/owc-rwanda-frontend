@@ -10,6 +10,7 @@ import DonationPage from "./pages/donation/donation.page";
 import ProjectDetailPage from "./pages/project-detail/project-detail.page";
 import PaymentResultPage from "./pages/payment-results/payment-result.page";
 import LoadingPage from "./pages/loading/loading.page";
+import InfoPage from "./pages/info/info.page";
 
 class App extends Component {
     constructor(props) {
@@ -165,6 +166,7 @@ class App extends Component {
                                        {...props}/>}/>
                             <Route exact path={`${properties.ulrPaymentResultPage}/:result`}
                                    component={PaymentResultPage}/>
+                                   <Route path={properties.urlInfoPage} component={InfoPage}/>
                         </Switch>
                     }
                 </div>

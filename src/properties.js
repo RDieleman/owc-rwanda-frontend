@@ -10,6 +10,7 @@ export const properties ={
     urlDonationPage: "/donation",
     urlProjectDetailPage: "/project",
     ulrPaymentResultPage: "/result",
+    urlInfoPage: "/info",
 
     title: "Icyotero",
     slogan: "Misfortune breeds blessings",
