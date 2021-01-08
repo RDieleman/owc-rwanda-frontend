@@ -31,13 +31,20 @@ class App extends Component {
 
             selectedProject: null,
 
-            currentlyLoading: 0,
             isLoading: true
         }
     }
 
     componentDidMount() {
-        this.setState({isLoading: this.state.currentlyLoading > 0});
+        if ('serviceWorker' in navigator) {
+            this.setState({currentlyLoading: this.state.currentlyLoading + 1}, () => {
+                navigator.serviceWorker
+                    .register("/serviceWorker.js")
+                    .then(() => {
+                        console.log("Service worker registered");
+                    });
+            });
+        }
 
         window.addEventListener("beforeinstallprompt", (event) => {
             console.log("beforeinstallprompt fired and caught");
@@ -46,67 +53,30 @@ class App extends Component {
             return false;
         })
 
-        this.handleRegisterServiceWorker();
-        this.handleLoadCharities();
-        this.handleLoadDonations();
-        this.handleLoadProjects();
+        let projects = [];
+        let newsItems = [];
+        let donations = [];
+        let charities = [];
 
-        handleGetNewsItems().then(d => {
-            this.setState({newsItems: d});
+        handleGetCharities().then(c =>{
+            charities = c
+            handleGetNewsItems().then(n => {
+                newsItems = n
+                handleGetRecentDonations().then(d =>{
+                    donations = d
+                    handleGetProjects().then(p =>{
+                        projects = p
+                        this.setState({
+                            projects: projects,
+                            newsItems: newsItems,
+                            donations: donations,
+                            charities: charities,
+                            isLoading: false
+                        })
+                    })
+                })
+            })
         })
-    }
-
-    handleLoadProjects = () => {
-        this.setState({currentlyLoading: this.state.currentlyLoading + 1}, () => {
-            handleGetProjects().then(
-                d => this.setState(
-                    {
-                        projects: d,
-                        currentlyLoading: this.state.currentlyLoading - 1
-                    })
-            );
-        });
-    }
-
-    handleLoadCharities = () => {
-        this.setState({currentlyLoading: this.state.currentlyLoading + 1}, () => {
-            handleGetCharities().then(
-                d => this.setState(
-                    {
-                        charities: d,
-                        currentlyLoading: this.state.currentlyLoading - 1
-                    })
-            );
-        });
-    }
-
-    handleLoadDonations = () => {
-        this.setState({currentlyLoading: this.state.currentlyLoading + 1}, () => {
-            handleGetRecentDonations().then(
-                d => this.setState(
-                    {
-                        donations: d,
-                        currentlyLoading: this.state.currentlyLoading - 1
-                    })
-            );
-        });
-    }
-
-    handleRegisterServiceWorker = () => {
-        //Register service worker if possible
-        if ('serviceWorker' in navigator) {
-            this.setState({currentlyLoading: this.state.currentlyLoading + 1}, () => {
-                navigator.serviceWorker
-                    .register("/serviceWorker.js")
-                    .then(() => {
-                        console.log("Service worker registered");
-                        this.setState(
-                            {
-                                currentlyLoading: this.state.currentlyLoading - 1
-                            })
-                    });
-            });
-        }
     }
 
 
