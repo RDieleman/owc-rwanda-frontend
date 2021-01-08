@@ -11,7 +11,9 @@ class ProjectDetailPage extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {}
+        this.state = {
+            id: props.match.params.id
+        }
     }
 
     handleSupportClick = () => {
@@ -19,7 +21,12 @@ class ProjectDetailPage extends Component {
     }
 
     render() {
-        const {project} = this.props;
+        let {project} = this.props;
+
+        if(!project){
+            this.props.history.push(properties.urlMenuPage);
+        }
+
         return (
             <div id="page-container">
                 <HeaderComponent/>

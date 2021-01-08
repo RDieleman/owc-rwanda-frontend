@@ -20,9 +20,6 @@ class DonationPage extends Component {
     }
 
     render() {
-        //Get selected project id
-        const id = this.props.match.params.id;
-
         return (
             <div id="page-container">
                 <HeaderComponent/>

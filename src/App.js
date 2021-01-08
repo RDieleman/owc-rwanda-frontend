@@ -125,6 +125,14 @@ class App extends Component {
         this.setState({selectedProject: project});
     }
 
+    getProject = (id) =>{
+        console.log("Project id:", id);
+        console.log("Projectssss", this.state.projects)
+        return this.state.projects.find(p =>{
+            return p.id === 3;
+        })
+    }
+
     render() {
         //Log current loading state
         console.log("Application is loading:", this.state.isLoading)
@@ -149,10 +157,11 @@ class App extends Component {
                                    render={(props) => <DonationPage
                                        donations={this.state.donations}
                                        {...props}/>}/>
-                            <Route path={`/project/:id?`}
+                            <Route path={`/project/:id`}
                                    render={(props) => <ProjectDetailPage
                                        project={this.state.selectedProject}
                                        donations={this.state.donations}
+                                       getProject={this.getProject}
                                        {...props}/>}/>
                             <Route exact path={`${properties.ulrPaymentResultPage}/:result`}
                                    component={PaymentResultPage}/>

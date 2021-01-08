@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import "./loading.styles.css";
-import {HeaderComponent} from "../../components/header/header.component";
 import {PaddingComponent} from "../../components/layout/padding/padding.component";
 import Logo from "../../logo.svg";
 import {properties} from "../../properties";
