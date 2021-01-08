@@ -3,8 +3,3 @@
     align-items: center;
     background-color: var(--color-main-dark);
 }
-
-.header-col-padding{
-    height: 0px;
-    background-color: red;
-}
