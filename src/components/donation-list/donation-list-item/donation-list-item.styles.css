@@ -1,0 +1,18 @@
+.donation-list-item-container{
+    width: 100%;
+    height: auto;
+}
+
+.donation-list-item-info-container{
+    flex: 1;
+}
+
+.donation-list-item-amount-container{
+    height: 100%;
+    width: auto;
+    flex-basis: 10%;
+    text-align: right;
+    font-weight: 700;
+    white-space: nowrap;
+    text-wrap: none;
+}

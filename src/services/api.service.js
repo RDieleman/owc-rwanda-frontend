@@ -26,4 +26,13 @@ export const handleGetCharities = () =>{
             console.log('Charities', response.data);
             return response.data;
         })
-}
+};
+
+export const handleGetRecentDonations = () =>{
+    console.log(`Retrieving recent donations...`);
+    return AXIOS.get(`/donation`)
+        .then(response =>{
+            console.log('Donations', response.data);
+            return response.data;
+        });
+};

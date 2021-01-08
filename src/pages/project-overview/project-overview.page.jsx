@@ -18,7 +18,7 @@ class ProjectOverviewPage extends Component{
     }
 
     handleSelectProject = (id) =>{
-
+        console.log("Project selected", id);
     }
 
     render() {
