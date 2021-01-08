@@ -1,0 +1,4 @@
+#detail-content-container{
+    flex: 1;
+    overflow-y: auto;
+}

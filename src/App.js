@@ -7,6 +7,7 @@ import {properties} from "./properties";
 import ProjectOverviewPage from "./pages/project-overview/project-overview.page";
 import {handleGetCharities, handleGetProjects, handleGetRecentDonations} from "./services/api.service";
 import DonationPage from "./pages/donation/donation.page";
+import ProjectDetailPage from "./pages/project-detail/project-detail.page";
 
 let deferredPrompt;
 
@@ -34,6 +35,8 @@ let projects = [];
 let charities = [];
 let donations = [];
 
+let selectedProject;
+
 function App() {
     //Register service worker if possible
     handleGetProjects().then(d => projects = d);
@@ -47,7 +50,6 @@ function App() {
                 console.log("Service worker registered");
             });
     }
-    ;
 
     window.addEventListener("beforeinstallprompt", (event) => {
         console.log("beforeinstallprompt fired and caught");
@@ -55,6 +57,10 @@ function App() {
         deferredPrompt = event;
         return false;
     })
+
+    const handleSelectProject = (project) => {
+        selectedProject = project;
+    }
 
     return (
         <Router>
@@ -66,10 +72,16 @@ function App() {
                            render={(props) => <ProjectOverviewPage
                                projects={projects}
                                charities={charities}
+                               handleSelectProject={handleSelectProject}
                                {...props}/>}/>
 
                     <Route path={`/donation/:id?`}
                            render={(props) => <DonationPage
+                               donations={donations}
+                               {...props}/>}/>
+                    <Route path={`/project/:id?`}
+                           render={(props) => <ProjectDetailPage
+                               project={selectedProject}
                                donations={donations}
                                {...props}/>}/>
                 </Switch>

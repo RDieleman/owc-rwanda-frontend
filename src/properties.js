@@ -6,6 +6,7 @@ export const properties ={
     urlMenuPage: "/menu",
     urlProjectOverviewPage: "/projects",
     urlDonationPage: "/donation",
+    urlProjectDetailPage: "/project",
 
     title: "Icyotero",
     currency: "$",
@@ -25,5 +26,7 @@ export const properties ={
     donationTextMain: "Thank you for deciding to support this cause!",
     donationTextSec: "How much would you like to contribute?",
     donationAmounts: [1, 5, 10, 20, 50],
-    donationTextCustom: "Enter a custom amount"
+    donationTextCustom: "Enter a custom amount",
+
+    detailTextBtnDonate: "Support this project"
 }

@@ -17,8 +17,9 @@ class ProjectOverviewPage extends Component{
         }
     }
 
-    handleSelectProject = (id) =>{
-        console.log("Project selected", id);
+    handleSelectProject = (project) =>{
+        this.props.handleSelectProject(project);
+        this.props.history.push(`${properties.urlProjectDetailPage}/${project.id}`);
     }
 
     render() {

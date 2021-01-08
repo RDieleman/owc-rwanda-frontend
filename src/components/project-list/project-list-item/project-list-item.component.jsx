@@ -5,7 +5,7 @@ import {PaddingComponent} from "../../layout/padding/padding.component";
 export const ProjectListItemComponent = ({id, title, imageUrl, handleOnClick}) => {
     return(
         <div className="container-vertical project-list-item-container"
-             onClick={() => handleOnClick(id)}>
+             onClick={handleOnClick}>
             <img src={imageUrl} alt="project-cover"/>
             <div className="container-vertical project-list-item-title-container">
                 <PaddingComponent basis="10px"/>
@@ -18,7 +18,6 @@ export const ProjectListItemComponent = ({id, title, imageUrl, handleOnClick}) =
                 </div>
                 <PaddingComponent basis="10px"/>
             </div>
-            <PaddingComponent basis="10px"/>
         </div>
     )
 }
