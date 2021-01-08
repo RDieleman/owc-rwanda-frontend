@@ -1,0 +1,20 @@
+.button-sec{
+    background-color: var(--color-sec-medium);
+    border: 1px solid var(--color-main-medium);
+    border-radius: var(--border-radius);
+    text-transform: none;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button-sec > div:first-child{
+    flex: 1;
+}
+
+.button-sec > img{
+    height: 80%;
+    width: auto;
+}

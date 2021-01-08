@@ -1,7 +1,7 @@
 import React from "react";
 import "./padding.styles.css";
 
-export const PaddingComponent = ({type}) => {
+export const PaddingComponent = ({type, styling}) => {
     let className;
 
     switch (type){
@@ -12,6 +12,10 @@ export const PaddingComponent = ({type}) => {
         default:
             className = "padding-row";
             break;
+    }
+
+    if(styling){
+        className += ` ${styling}`
     }
 
     return (

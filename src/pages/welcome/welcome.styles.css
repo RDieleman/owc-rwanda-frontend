@@ -1,11 +1,3 @@
-#welcome-container{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* horizontal */
-    justify-content: flex-start; /* vertical */
-    height: 100%;
-}
-
 #welcome-content{
     width: 100%;
     flex: 1;

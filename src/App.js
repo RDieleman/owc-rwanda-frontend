@@ -1,7 +1,8 @@
 import './App.css';
 import React from "react";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import {WelcomePage} from "./pages/welcome/welcome.page";
+import WelcomePage from "./pages/welcome/welcome.page";
+import MenuPage from "./pages/menu/menu.page";
 
 let deferredPrompt;
 const createInstallPrompt = () =>{
@@ -46,6 +47,7 @@ function App() {
           <div className="App">
               <Switch>
                   <Route exact path="/" component={WelcomePage}/>
+                  <Route exact path="/menu" component={MenuPage}/>
               </Switch>
           </div>
       </Router>
