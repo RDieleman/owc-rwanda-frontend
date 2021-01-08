@@ -1,0 +1,8 @@
+.text-area-container{
+    width: calc(100% - (var(--basic-margin) * 2));
+    border-radius: var(--border-radius);
+    height: auto;
+    min-height: 150px;
+    padding:calc(var(--basic-margin) * 0.3) var(--basic-margin);
+    resize: none;
+}

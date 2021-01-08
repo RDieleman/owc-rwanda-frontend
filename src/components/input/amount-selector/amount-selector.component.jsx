@@ -1,6 +1,6 @@
 import React from "react";
 import "./amount-selector.styles.css";
-import {PaddingComponent} from "../layout/padding/padding.component";
+import {PaddingComponent} from "../../layout/padding/padding.component";
 
 export const AmountSelectorComponent = ({amounts, handleChoice}) => {
     return (

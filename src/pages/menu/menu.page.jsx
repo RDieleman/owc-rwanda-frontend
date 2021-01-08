@@ -3,7 +3,7 @@ import "./menu.styles.css";
 import {HeaderComponent} from "../../components/header/header.component";
 import {PaddingComponent} from "../../components/layout/padding/padding.component";
 import {properties} from "../../properties";
-import {ButtonSecComponent} from "../../components/buttons/button-sec/button-sec.component";
+import {ButtonSecComponent} from "../../components/input/buttons/button-sec/button-sec.component";
 
 class MenuPage extends Component {
     constructor(props) {

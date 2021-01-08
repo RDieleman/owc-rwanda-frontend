@@ -4,7 +4,7 @@ import {HeaderComponent} from "../../components/header/header.component";
 import {PaddingComponent} from "../../components/layout/padding/padding.component";
 import {properties} from "../../properties";
 import {ProjectListItemComponent} from "../../components/project-list/project-list-item/project-list-item.component";
-import {ButtonMainComponent} from "../../components/buttons/button-main/button-main.component";
+import {ButtonMainComponent} from "../../components/input/buttons/button-main/button-main.component";
 import {DonationListComponent} from "../../components/donation-list/donation-list.component";
 
 class ProjectDetailPage extends Component {

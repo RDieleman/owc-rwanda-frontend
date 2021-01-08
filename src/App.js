@@ -8,6 +8,7 @@ import ProjectOverviewPage from "./pages/project-overview/project-overview.page"
 import {handleGetCharities, handleGetProjects, handleGetRecentDonations} from "./services/api.service";
 import DonationPage from "./pages/donation/donation.page";
 import ProjectDetailPage from "./pages/project-detail/project-detail.page";
+import PaymentResultPage from "./pages/payment-results/payment-result.page";
 
 let deferredPrompt;
 
@@ -84,6 +85,7 @@ function App() {
                                project={selectedProject}
                                donations={donations}
                                {...props}/>}/>
+                    <Route exact path={`${properties.ulrPaymentResultPage}/:result`} component={PaymentResultPage}/>
                 </Switch>
             </div>
         </Router>

@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import "./welcome.styles.css";
 import { properties } from "../../properties";
 import {HeaderComponent} from "../../components/header/header.component";
-import {ButtonMainComponent} from "../../components/buttons/button-main/button-main.component";
+import {ButtonMainComponent} from "../../components/input/buttons/button-main/button-main.component";
 import {PaddingComponent} from "../../components/layout/padding/padding.component";
 
 class WelcomePage extends Component{
@@ -50,7 +50,7 @@ class WelcomePage extends Component{
                     {/*Next button*/}
                     <ButtonMainComponent
                         handleOnClick={this.handleNextClick}
-                        content="Next"
+                        content="Continue"
                     />
                 </div>
             </div>
