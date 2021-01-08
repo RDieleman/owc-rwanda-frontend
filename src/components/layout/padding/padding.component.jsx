@@ -1,24 +1,15 @@
 import React from "react";
 import "./padding.styles.css";
 
-export const PaddingComponent = ({type, styling}) => {
-    let className;
+export const PaddingComponent = ({basis}) => {
+    let basisChecked = (basis === undefined)? 'var(--basic-margin)' : basis;
 
-    switch (type){
-        case "col":
-            className = "padding-col";
-            break;
-        case "row":
-        default:
-            className = "padding-row";
-            break;
+    const style = {
+        flexBasis: basisChecked,
+        flexGrow: 0,
+        flexShrink: 0
     }
-
-    if(styling){
-        className += ` ${styling}`
-    }
-
     return (
-        <div className={className}/>
+        <div style={style}/>
     )
 }

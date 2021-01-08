@@ -1,9 +1,11 @@
 .padding-col{
-    height: var(--basic-margin);
     flex-shrink: 0;
+    flex-grow: 0;
+    flex-basis: var(--basic-margin);
 }
 
 .padding-row{
-    width: var(--basic-margin);
+    flex-basis: var(--basic-margin);
     flex-shrink: 0;
+    flex-grow: 0;
 }

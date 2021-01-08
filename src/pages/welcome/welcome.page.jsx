@@ -26,25 +26,25 @@ class WelcomePage extends Component{
                 <HeaderComponent/>
 
                 {/*Main page content*/}
-                <div id="welcome-content">
-                    <div>
-                        <PaddingComponent type="row"/>
-                        <div className="welcome-text-container">
-                            <PaddingComponent type="col"/>
-                            <PaddingComponent type="col"/>
+                <div className="container-vertical" id="welcome-content">
+                    <div className="container-horizontal" >
+                        <PaddingComponent/>
+                        <div className="container-vertical">
+                            <PaddingComponent/>
+                            <PaddingComponent/>
 
                             {/*Text content*/}
-                            <div className="welcome-text-main text-body">
+                            <div className="text-body">
                                 {properties.welcomeTextMain}
                             </div>
-                            <PaddingComponent type="col"/>
-                            <PaddingComponent type="col"/>
-                            <div className="welcome-text-sec text-body">
+                            <PaddingComponent/>
+                            <PaddingComponent/>
+                            <div className="text-body">
                                 {properties.welcomeTextSec}
                             </div>
-                            <PaddingComponent type="col"/>
+                            <PaddingComponent/>
                         </div>
-                        <PaddingComponent type="row"/>
+                        <PaddingComponent/>
                     </div>
 
                     {/*Next button*/}

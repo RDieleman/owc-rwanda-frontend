@@ -29,34 +29,35 @@ class ProjectOverviewPage extends Component{
                 <HeaderComponent/>
                 {/*Container to set horizontal padding*/}
                 <div className="container-horizontal">
-                    <PaddingComponent type="row"/>
+                    <PaddingComponent/>
                     {/*Container to set vertical padding*/}
                     <div className="container-vertical">
-                        <PaddingComponent type="col"/>
-                        <PaddingComponent type="col"/>
+                        <PaddingComponent/>
+                        <PaddingComponent/>
 
                         {/*Container for content*/}
                         <div id="overview-container" className="container-vertical">
                             <div className="text-body">
                                 {properties.overviewTextMain}
                             </div>
-                            <PaddingComponent type="col"/>
+                            <PaddingComponent/>
                             <ProjectListComponent
                                 handleProjectSelect={this.handleSelectProject}
                                 projects={this.props.projects}
                             />
-                            <PaddingComponent type="col"/>
+                            <PaddingComponent/>
+                            <PaddingComponent/>
                             <div className="text-body">
                                 {properties.overviewTextSec}
                             </div>
-                            <PaddingComponent type="col"/>
+                            <PaddingComponent/>
                             <CharityListComponent
                                 charities={this.props.charities}/>
                         </div>
 
-                        <PaddingComponent type="col"/>
+                        <PaddingComponent/>
                     </div>
-                    <PaddingComponent type="row"/>
+                    <PaddingComponent/>
                 </div>
             </div>
         )

@@ -28,28 +28,28 @@ class MenuPage extends Component {
         return (
             <div id="page-container">
                 <HeaderComponent/>
-                <PaddingComponent type="col"/>
-                <PaddingComponent type="col"/>
-                <div id="menu-container">
-                    <PaddingComponent type="row"/>
-                    <div id="menu-content">
+                <PaddingComponent/>
+                <PaddingComponent/>
+                <div id="menu-container" className="container-horizontal">
+                    <PaddingComponent/>
+                    <div id="menu-content" className="container-vertical">
                         <div id="menu-text-container" className="text-body">
                             {properties.menuTextMain}
                         </div>
-                        <div id="menu-button-container">
+                        <div className="container-vertical">
                             <div className="text-body">{properties.menuTextSec}</div>
                             <ButtonSecComponent
                                 handleOnClick={this.handleHelpClick}
                                 content={properties.menuButtonTextHelp}
                                 iconLocation="images/icons/icon-help.svg"
                             />
-                            <PaddingComponent type="col" styling="button-padding"/>
+                            <PaddingComponent basis="10px"/>
                             <ButtonSecComponent
                                 handleOnClick={this.handleInfoClick}
                                 content={properties.menuButtonTextInfo}
                                 iconLocation="images/icons/icon-info.svg"
                             />
-                            <PaddingComponent type="col"/>
+                            <PaddingComponent/>
                             <ButtonSecComponent
                                 handleOnClick={this.handleDonateClick}
                                 content={properties.menuButtonTextDonate}
@@ -57,7 +57,7 @@ class MenuPage extends Component {
                                 />
                         </div>
                     </div>
-                    <PaddingComponent type="row"/>
+                    <PaddingComponent/>
                 </div>
 
                 <PaddingComponent type="col"/>

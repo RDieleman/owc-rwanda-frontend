@@ -8,7 +8,7 @@ export const ProjectListItemComponent = ({id, title, imageUrl, handleOnClick}) =
              onClick={() => handleOnClick(id)}>
             <img src={imageUrl} alt="project-cover"/>
             <div className="container-vertical project-list-item-title-container">
-                <PaddingComponent type="col" styling="project-list-item-title-padding"/>
+                <PaddingComponent basis="10px"/>
                 <div className="container-horizontal">
                     <PaddingComponent type="row"/>
                     <div className="project-list-item-title text-body-sec">
@@ -16,9 +16,9 @@ export const ProjectListItemComponent = ({id, title, imageUrl, handleOnClick}) =
                     </div>
                     <PaddingComponent type="row"/>
                 </div>
-                <PaddingComponent type="col" styling="project-list-item-title-padding"/>
+                <PaddingComponent basis="10px"/>
             </div>
-            <PaddingComponent type="col" styling="project-list-item-title-padding"/>
+            <PaddingComponent basis="10px"/>
         </div>
     )
 }
