@@ -49,7 +49,8 @@ class App extends Component {
         }
 
         window.addEventListener("beforeinstallprompt", (event) => {
-            console.log("beforeinstallprompt fired and caught");
+            console.log("beforeinstallprompt fired and caught", event);
+            console.log(this);
             event.preventDefault();
             this.setState({deferredPrompt: event});
             return false;
@@ -81,31 +82,12 @@ class App extends Component {
         })
     }
 
-
-    createInstallPrompt = () => {
-        let {deferredPrompt} = this.state;
-
-        if (deferredPrompt) {
-            deferredPrompt.prompt();
-
-            deferredPrompt.userChoice.then((choiceResult) => {
-                console.log(choiceResult.outcome);
-
-                if (choiceResult.outcome === 'dismissed') {
-                    console.log('User cancelled installation');
-                } else {
-                    console.log('User added to homescreen');
-                }
-            })
-        } else {
-            console.log("No prompt available");
-        }
-        //clear deferredPrompt
-        deferredPrompt = null;
-    }
-
     handleSelectProject = (project) => {
         this.setState({selectedProject: project});
+    }
+
+    handleResetInstallPrompt = () =>{
+        this.setState({deferredPrompt: null})
     }
 
     getProject = (id) => {
@@ -126,7 +108,10 @@ class App extends Component {
                         <LoadingPage/>
                         :
                         <Switch>
-                            <Route exact path="/" component={WelcomePage}/>
+                            <Route exact path="/" render={(props) => <WelcomePage
+                                installPrompt={this.state.deferredPrompt}
+                                handleResetPrompt={this.handleResetInstallPrompt}
+                                {...props}/>}/>
                             <Route path={properties.urlMenuPage} component={MenuPage}/>
                             <Route path={properties.urlProjectOverviewPage}
                                    render={(props) => <ProjectOverviewPage
