@@ -14,7 +14,9 @@ export const properties ={
 
     title: "Icyotero",
     slogan: "Misfortune breeds blessings",
-    currency: "$",
+
+    currency: "EUR", //todo: implement currency
+    numberOfDecimals: 0, //Number of decimals shown in the donation amounts
 
     welcomeTextMain: "Welcome!",
     welcomeTextSec:"Thank you for supporting our cause.",

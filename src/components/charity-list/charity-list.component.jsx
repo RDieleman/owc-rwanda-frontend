@@ -10,8 +10,8 @@ export const CharityListComponent = ({charities}) =>{
                 return <CharityListItemComponent
                     name={c.name}
                     description={c.description}
-                    imageUrl={c.logo_url}
-                    externalUrl={c.external_url}
+                    imageUrl={c.logoUrl}
+                    externalUrl={c.externalUrl}
                     key={i}
                 />
             })}

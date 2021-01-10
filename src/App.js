@@ -16,6 +16,8 @@ import ProjectDetailPage from "./pages/project-detail/project-detail.page";
 import PaymentResultPage from "./pages/payment-results/payment-result.page";
 import LoadingPage from "./pages/loading/loading.page";
 import InfoPage from "./pages/info/info.page";
+import {Project} from "./models/project";
+import {Charity} from "./models/charity";
 
 class App extends Component {
     constructor(props) {
@@ -108,7 +110,6 @@ class App extends Component {
 
     getProject = (id) => {
         console.log("Project id:", id);
-        console.log("Projectssss", this.state.projects)
         return this.state.projects.find(p => {
             return p.id === 3;
         })

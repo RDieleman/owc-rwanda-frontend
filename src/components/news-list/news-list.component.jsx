@@ -11,7 +11,8 @@ export const NewsList = ({newsItems}) => {
                     <NewsListItem
                         description={n.description}
                         title={n.title}
-                        imageUrl={n.image_url}
+                        imageUrl={n.imageUrl}
+                        externalUrl={n.externalUrl}
                         key={i}
                     />
                     <PaddingComponent basis="10px"/>

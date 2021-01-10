@@ -2,7 +2,7 @@ import React from "react";
 import "./project-list-item.styles.css";
 import {PaddingComponent} from "../../layout/padding/padding.component";
 
-export const ProjectListItemComponent = ({id, title, imageUrl, handleOnClick}) => {
+export const ProjectListItemComponent = ({title, imageUrl, handleOnClick}) => {
     return(
         <div className="container-vertical project-list-item-container"
              onClick={handleOnClick}>

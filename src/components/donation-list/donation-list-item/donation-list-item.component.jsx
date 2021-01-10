@@ -12,7 +12,7 @@ export const DonationListItemComponent = ({name, message, amount}) => {
                 <PaddingComponent />
             </div>
             <PaddingComponent basis="5px"/>
-            <div className="text-body-sec donation-list-item-amount-container">{`${properties.currency} ${amount}`}</div>
+            <div className="text-body-sec donation-list-item-amount-container">{amount}</div>
         </div>
     )
 }

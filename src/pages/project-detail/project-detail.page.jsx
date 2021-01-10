@@ -33,7 +33,7 @@ class ProjectDetailPage extends Component {
                 <ProjectListItemComponent
                     handleOnClick={() => {
                     }}
-                    imageUrl={project.image_url}
+                    imageUrl={project.imageUrl}
                     id={project.id}
                     title={project.title}/>
                 <div className="container-horizontal" id="detail-content-container">
