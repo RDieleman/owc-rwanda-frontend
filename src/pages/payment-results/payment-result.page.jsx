@@ -53,7 +53,6 @@ class PaymentResultPage extends Component {
 
         return (
             <div id="page-container">
-                <HeaderComponent/>
                 <div id="result-container" className="container-horizontal">
                     <PaddingComponent/>
                     <div>

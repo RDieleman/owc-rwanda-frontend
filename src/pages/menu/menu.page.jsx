@@ -28,9 +28,6 @@ class MenuPage extends Component {
     render() {
         return (
             <div id="page-container">
-                <HeaderComponent/>
-                <PaddingComponent/>
-                <PaddingComponent/>
                 <div id="menu-container" className="container-horizontal">
                     <PaddingComponent/>
                     <div id="menu-content" className="container-vertical">

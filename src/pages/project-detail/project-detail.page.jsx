@@ -29,7 +29,6 @@ class ProjectDetailPage extends Component {
 
         return (
             <div id="page-container">
-                <HeaderComponent/>
                 <ProjectListItemComponent
                     handleOnClick={() => {
                     }}

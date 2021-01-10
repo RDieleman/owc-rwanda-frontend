@@ -25,8 +25,6 @@ class ProjectOverviewPage extends Component{
     render() {
         return(
             <div id="page-container">
-                {/*Header*/}
-                <HeaderComponent/>
                 {/*Container to set horizontal padding*/}
                 <div className="container-horizontal">
                     <PaddingComponent/>

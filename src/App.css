@@ -101,6 +101,7 @@ html, #root{
     justify-content: flex-start; /* vertical */
     height: 100%;
     overflow: auto;
+    flex: 1;
 }
 #page-container > div{
     width: 100%;
@@ -127,6 +128,11 @@ html, #root{
 }
 
 .container-vertical > div{
+    width: 100%;
+}
+
+#main-container{
+    height: 100%;
     width: 100%;
 }
 

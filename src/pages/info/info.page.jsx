@@ -17,7 +17,6 @@ class InfoPage extends Component{
     render() {
         return (
             <div id="page-container">
-                <HeaderComponent/>
                 <div id="info-feed-container" className="container-horizontal">
                     <PaddingComponent/>
                     <div className="container-vertical">

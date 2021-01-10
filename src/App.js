@@ -16,8 +16,7 @@ import ProjectDetailPage from "./pages/project-detail/project-detail.page";
 import PaymentResultPage from "./pages/payment-results/payment-result.page";
 import LoadingPage from "./pages/loading/loading.page";
 import InfoPage from "./pages/info/info.page";
-import {Project} from "./models/project";
-import {Charity} from "./models/charity";
+import {HeaderComponent} from "./components/header/header.component";
 
 class App extends Component {
     constructor(props) {
@@ -82,12 +81,34 @@ class App extends Component {
         })
     }
 
-    handleSelectProject = (project) => {
-        this.setState({selectedProject: project});
+    handleCreateInstallPrompt = () => {
+        console.log("Prompting user with install");
+
+        let {deferredPrompt} = this.state;
+
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+
+            deferredPrompt.userChoice.then((choiceResult) => {
+                console.log(choiceResult.outcome);
+
+                if (choiceResult.outcome === 'dismissed') {
+                    console.log('User cancelled installation');
+                } else {
+                    console.log('User added to homescreen');
+                }
+            })
+        } else {
+            console.log("No prompt available");
+        }
+
+        //clear deferredPrompt
+        this.setState({deferredPrompt: null})
     }
 
-    handleResetInstallPrompt = () =>{
-        this.setState({deferredPrompt: null})
+
+    handleSelectProject = (project) => {
+        this.setState({selectedProject: project});
     }
 
     getProject = (id) => {
@@ -107,36 +128,39 @@ class App extends Component {
                     {(this.state.isLoading) ?
                         <LoadingPage/>
                         :
-                        <Switch>
-                            <Route exact path="/" render={(props) => <WelcomePage
-                                installPrompt={this.state.deferredPrompt}
-                                handleResetPrompt={this.handleResetInstallPrompt}
-                                {...props}/>}/>
-                            <Route path={properties.urlMenuPage} component={MenuPage}/>
-                            <Route path={properties.urlProjectOverviewPage}
-                                   render={(props) => <ProjectOverviewPage
-                                       projects={this.state.projects}
-                                       charities={this.state.charities}
-                                       handleSelectProject={this.handleSelectProject}
-                                       {...props}/>}/>
+                        <div id="main-container" className="container-vertical">
+                            <HeaderComponent
+                                installIsAvailable={(this.state.deferredPrompt)}
+                                handleInstallClicked={this.handleCreateInstallPrompt}
+                            />
+                            <Switch>
+                                <Route exact path="/" component={WelcomePage}/>
+                                <Route path={properties.urlMenuPage} component={MenuPage}/>
+                                <Route path={properties.urlProjectOverviewPage}
+                                       render={(props) => <ProjectOverviewPage
+                                           projects={this.state.projects}
+                                           charities={this.state.charities}
+                                           handleSelectProject={this.handleSelectProject}
+                                           {...props}/>}/>
 
-                            <Route path={`/donation/:id?`}
-                                   render={(props) => <DonationPage
-                                       donations={this.state.donations}
-                                       {...props}/>}/>
-                            <Route path={`/project/:id`}
-                                   render={(props) => <ProjectDetailPage
-                                       project={this.state.selectedProject}
-                                       donations={this.state.donations}
-                                       getProject={this.getProject}
-                                       {...props}/>}/>
-                            <Route exact path={`${properties.ulrPaymentResultPage}/:result`}
-                                   component={PaymentResultPage}/>
-                            <Route path={properties.urlInfoPage}
-                                   render={(props) => <InfoPage
-                                       newsItems={this.state.newsItems}
-                                       {...props}/>}/>
-                        </Switch>
+                                <Route path={`/donation/:id?`}
+                                       render={(props) => <DonationPage
+                                           donations={this.state.donations}
+                                           {...props}/>}/>
+                                <Route path={`/project/:id`}
+                                       render={(props) => <ProjectDetailPage
+                                           project={this.state.selectedProject}
+                                           donations={this.state.donations}
+                                           getProject={this.getProject}
+                                           {...props}/>}/>
+                                <Route exact path={`${properties.ulrPaymentResultPage}/:result`}
+                                       component={PaymentResultPage}/>
+                                <Route path={properties.urlInfoPage}
+                                       render={(props) => <InfoPage
+                                           newsItems={this.state.newsItems}
+                                           {...props}/>}/>
+                            </Switch>
+                        </div>
                     }
                 </div>
             </Router>

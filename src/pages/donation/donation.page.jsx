@@ -22,7 +22,6 @@ class DonationPage extends Component {
     render() {
         return (
             <div id="page-container">
-                <HeaderComponent/>
                 <div className="container-horizontal">
                     <PaddingComponent/>
                     <div className="container-vertical">
