@@ -31,6 +31,8 @@ class MenuPage extends Component {
                 <div id="menu-container" className="container-horizontal">
                     <PaddingComponent/>
                     <div id="menu-content" className="container-vertical">
+                        <PaddingComponent/>
+                        <PaddingComponent/>
                         <div id="menu-text-container" className="text-body">
                             {properties.menuTextMain}
                         </div>
