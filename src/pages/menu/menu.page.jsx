@@ -18,17 +18,17 @@ class MenuPage extends Component {
 
     //Redirect to project overview page
     handleHelpClick = () => {
-        this.props.history.push(properties.urlProjectOverviewPage);
+        this.props.history.push("/projects");
     }
 
     //Redirect to charity info and newsfeed
     handleInfoClick = () => {
-        this.props.history.push(properties.urlInfoPage);
+        this.props.history.push("/info");
     }
 
     //Redirect straight to donation page
     handleDonateClick = () => {
-        this.props.history.push(properties.urlDonationPage);
+        this.props.history.push("/donation");
     }
 
     render() {

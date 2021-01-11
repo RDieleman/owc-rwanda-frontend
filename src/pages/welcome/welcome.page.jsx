@@ -20,7 +20,7 @@ class WelcomePage extends Component {
 
     //Redirect to menu page
     handleNextClick = () => {
-        this.props.history.push(properties.urlMenuPage);
+        this.props.history.push("/menu");
     }
 
     render() {

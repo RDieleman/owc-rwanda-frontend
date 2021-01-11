@@ -10,10 +10,6 @@ const cacheNameDynamic = 'dynamic';
 
 //Targets to cache in the static cache
 const cacheTargets = [
-    "http://localhost:8080/charity",
-    "http://localhost:8080/donation",
-    "http://localhost:8080/project",
-    "http://localhost:8080/news",
 
     "/manifest.json",
 
@@ -42,7 +38,9 @@ const cacheTargets = [
     "/menu",
     "/projects",
     "/project",
-    "/result"
+    "/result",
+    "/info",
+    "/donation"
 ];
 
 // Service worker install event

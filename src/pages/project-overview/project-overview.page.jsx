@@ -25,7 +25,7 @@ class ProjectOverviewPage extends Component{
     // Redirects the user to the detail page of the project
     handleSelectProject = (project) =>{
         this.props.handleSelectProject(project);
-        this.props.history.push(`${properties.urlProjectDetailPage}/${project.id}`);
+        this.props.history.push(`/project/${project.id}`);
     }
 
     render() {
