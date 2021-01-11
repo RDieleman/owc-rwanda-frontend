@@ -16,10 +16,6 @@ const cacheTargets = [
     "http://localhost:8080/news",
 
     "/manifest.json",
-    "/static/js/main.chunk.js",
-    "/static/js/bundle.js",
-    "/static/js/0.chunk.js.map",
-    "/static/js/0.chunk.js",
 
     "/images/icons/favicon.ico",
     "/images/icons/icon-help.svg",
@@ -30,6 +26,7 @@ const cacheTargets = [
     "/images/icons/icon-install.svg",
     "/images/placeholder-image.png",
     "/logo.svg",
+    "/images/icons/icon-error.png",
 
     "https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap",
     "https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBBc4AMP6lQ.woff2",

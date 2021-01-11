@@ -1,16 +1,13 @@
 import React, {Component} from "react";
 import "./donation.styles.css";
-import {HeaderComponent} from "../../components/header/header.component";
 import {PaddingComponent} from "../../components/layout/padding/padding.component";
 import {properties} from "../../properties";
 import {AmountSelectorComponent} from "../../components/input/amount-selector/amount-selector.component";
 import {ButtonThrComponent} from "../../components/input/buttons/button-thr/button-thr.component";
 import {DonationListComponent} from "../../components/donation-list/donation-list.component";
-import {handlePayment} from "../../services/payment.service";
-import {TextBox} from "../../components/input/text-box/text-box.component";
 import {NumBox} from "../../components/input/num-box/num-box.component";
-import {ButtonSecComponent} from "../../components/input/buttons/button-sec/button-sec.component";
 import {ButtonMainComponent} from "../../components/input/buttons/button-main/button-main.component";
+import {handlePayment} from "../../services/payment.service";
 
 class DonationPage extends Component {
     constructor(props) {
