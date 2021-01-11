@@ -1,3 +1,4 @@
+//News item object to abstract api
 export function NewsItem(title, description, imageUrl, externalUrl){
     this.title = title;
     this.description = description;

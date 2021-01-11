@@ -1,8 +1,9 @@
 import React from "react";
 import "./num-box.styles.css";
-import {TextBox} from "../text-box/text-box.component";
 
 export const NumBox = ({placeholder, handleInputChange, min, max}) => {
+
+    // Numeric input box
     return (
         <input
             type="number"

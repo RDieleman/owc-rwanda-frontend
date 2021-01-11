@@ -6,10 +6,10 @@ import MenuPage from "./pages/menu/menu.page";
 import {properties} from "./properties";
 import ProjectOverviewPage from "./pages/project-overview/project-overview.page";
 import {
-    handleGetCharities, handleGetDonations,
+    handleGetCharities,
+    handleGetDonations,
     handleGetNewsItems,
     handleGetProjects,
-    handleGetRecentDonations
 } from "./services/api.service";
 import DonationPage from "./pages/donation/donation.page";
 import ProjectDetailPage from "./pages/project-detail/project-detail.page";
@@ -23,20 +23,23 @@ class App extends Component {
         super(props);
 
         this.state = {
-            deferredPrompt: null,
+            deferredPrompt: null, //Install prompt filled once supplied
 
-            projects: [],
-            charities: [],
-            donations: [],
-            newsItems: [],
+            projects: [], //Retrieved projects
+            charities: [], //Retrieved charities
+            donations: [], //Retrieved donations
+            newsItems: [], //Retrieved news items
 
-            selectedProject: null,
+            selectedProject: null, //The selected project. Filled from overview page.
 
-            isLoading: true
+            isLoading: true //Loading state of the app
         }
     }
 
+    //Setup of the app
     async componentDidMount() {
+
+        //Setup the service worker if possible
         if ('serviceWorker' in navigator) {
             await navigator.serviceWorker
                 .register("/serviceWorker.js")
@@ -45,6 +48,11 @@ class App extends Component {
                 });
         }
 
+        /*
+            Add an event listener to catch the install prompt.
+            Once caught, prevent the popup and set the state, which enables the download button in the header.
+            This usually takes a few seconds to appear.
+         */
         window.addEventListener("beforeinstallprompt", (event) => {
             console.log("beforeinstallprompt fired and caught", event);
             event.preventDefault();
@@ -52,30 +60,35 @@ class App extends Component {
             return false;
         })
 
-        //Try to load resources
-        try{
-            await handleGetDonations().then(d =>{
+        //Load all the resources
+        try {
+            await handleGetDonations().then(d => {
                 this.setState({donations: d});
             });
 
-            await handleGetCharities().then(c =>{
+            await handleGetCharities().then(c => {
                 this.setState({charities: c})
             });
 
-            await handleGetNewsItems().then(n =>{
+            await handleGetNewsItems().then(n => {
                 this.setState({newsItems: n})
             });
 
-            await handleGetProjects().then(p =>{
+            await handleGetProjects().then(p => {
                 this.setState({projects: p})
             });
 
-        //Always disable loading
-        }finally {
+            //Always disable loading
+        } finally {
             this.setState({isLoading: false});
         }
     }
 
+    /*
+        Create the install prompt after it has been caught.
+        Function is passed into the header and called when install button is pressed.
+        If no prompt is available nothing happens.
+     */
     handleCreateInstallPrompt = () => {
         let {deferredPrompt} = this.state;
 
@@ -98,31 +111,43 @@ class App extends Component {
     }
 
 
+    /*
+        Set the selected project so detail page can retrieve it.
+        Is called from the overview page.
+     */
     handleSelectProject = (project) => {
         this.setState({selectedProject: project});
-    }
-
-    getProject = (id) => {
-        return this.state.projects.find(p => {
-            return p.id === 3;
-        })
     }
 
     render() {
         return (
             <Router>
                 <div className="App">
+                    {/*Display the loading page if loading state is active*/}
                     {(this.state.isLoading) ?
                         <LoadingPage/>
                         :
+                        // Content of the application
                         <div id="main-container" className="container-vertical">
+
+                            {/*
+                                Global header component
+                                Is provided with whether the app can be installed and the function to install the app
+                            */}
                             <HeaderComponent
                                 installIsAvailable={(this.state.deferredPrompt)}
                                 handleInstallClicked={this.handleCreateInstallPrompt}
                             />
+
+                            {/*Switch to handle routing*/}
                             <Switch>
+                                {/*Welcome page*/}
                                 <Route exact path="/" component={WelcomePage}/>
+
+                                {/*Menu page*/}
                                 <Route path={properties.urlMenuPage} component={MenuPage}/>
+
+                                {/*Project overview page*/}
                                 <Route path={properties.urlProjectOverviewPage}
                                        render={(props) => <ProjectOverviewPage
                                            projects={this.state.projects}
@@ -130,18 +155,25 @@ class App extends Component {
                                            handleSelectProject={this.handleSelectProject}
                                            {...props}/>}/>
 
+                                {/*donation page*/}
                                 <Route path={`/donation/:id?`}
                                        render={(props) => <DonationPage
                                            donations={this.state.donations}
                                            {...props}/>}/>
+
+                                {/*Project detail page*/}
                                 <Route path={`/project/:id`}
                                        render={(props) => <ProjectDetailPage
                                            project={this.state.selectedProject}
                                            donations={this.state.donations}
                                            getProject={this.getProject}
                                            {...props}/>}/>
+
+                                {/*Payment result page*/}
                                 <Route exact path={`${properties.ulrPaymentResultPage}/:result`}
                                        component={PaymentResultPage}/>
+
+                                {/*Info and newsfeed page*/}
                                 <Route path={properties.urlInfoPage}
                                        render={(props) => <InfoPage
                                            newsItems={this.state.newsItems}

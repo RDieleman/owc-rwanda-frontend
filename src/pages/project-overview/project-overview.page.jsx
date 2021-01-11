@@ -1,13 +1,17 @@
 import React, {Component} from "react";
 import "./project-overview.styles.css";
-import {HeaderComponent} from "../../components/header/header.component";
 import {PaddingComponent} from "../../components/layout/padding/padding.component";
 import {properties} from "../../properties";
 import {ProjectListComponent} from "../../components/project-list/project-list.component";
 import {CharityListComponent} from "../../components/charity-list/charity-list.component";
 
-// Expects an array 'projects'
-// and an array 'charities' in props
+
+/*
+    Page that contains an overview of the existing projects that redirect to the detail page of the project.
+    At the bottom also shows a list of alternative charities that redirect to an external website.
+
+    Expects a list of projects and charities and a function to select the project as properties.
+ */
 class ProjectOverviewPage extends Component{
     constructor(props) {
         super(props);
@@ -17,6 +21,8 @@ class ProjectOverviewPage extends Component{
         }
     }
 
+    // Uses the provided function to call back and select a project.
+    // Redirects the user to the detail page of the project
     handleSelectProject = (project) =>{
         this.props.handleSelectProject(project);
         this.props.history.push(`${properties.urlProjectDetailPage}/${project.id}`);
@@ -25,30 +31,39 @@ class ProjectOverviewPage extends Component{
     render() {
         return(
             <div id="page-container">
-                {/*Container to set horizontal padding*/}
                 <div className="container-horizontal">
                     <PaddingComponent/>
-                    {/*Container to set vertical padding*/}
                     <div className="container-vertical">
+
                         <PaddingComponent/>
                         <PaddingComponent/>
 
                         {/*Container for content*/}
                         <div id="overview-container" className="container-vertical">
                             <div className="text-body">
+                                {/*Main text*/}
                                 {properties.overviewTextMain}
                             </div>
+
                             <PaddingComponent/>
+
+                            {/*List of projects*/}
                             <ProjectListComponent
                                 handleProjectSelect={this.handleSelectProject}
                                 projects={this.props.projects}
                             />
+
                             <PaddingComponent/>
                             <PaddingComponent/>
+
+                            {/*Secondary text*/}
                             <div className="text-body">
                                 {properties.overviewTextSec}
                             </div>
+
                             <PaddingComponent/>
+
+                            {/*List of charities*/}
                             <CharityListComponent
                                 charities={this.props.charities}/>
                         </div>

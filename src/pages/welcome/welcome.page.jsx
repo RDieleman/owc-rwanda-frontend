@@ -1,10 +1,13 @@
 import React, {Component} from "react";
 import "./welcome.styles.css";
 import {properties} from "../../properties";
-import {HeaderComponent} from "../../components/header/header.component";
 import {ButtonMainComponent} from "../../components/input/buttons/button-main/button-main.component";
 import {PaddingComponent} from "../../components/layout/padding/padding.component";
-import {ButtonSecComponent} from "../../components/input/buttons/button-sec/button-sec.component";
+
+/*
+    Welcome (and home) page of the application.
+    Only contains a welcome message and redirect to the menu page.
+ */
 
 class WelcomePage extends Component {
     constructor(props) {

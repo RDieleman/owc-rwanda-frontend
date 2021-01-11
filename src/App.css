@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
+/*
+    All predefined global values used in the application
+ */
 :root{
-    /*Global values*/
+    /*Colors*/
     --color-main-dark: #2b454f;
     --color-main-medium: #359287;
     --color-main-light: #d0c8a0;
@@ -12,7 +15,11 @@
     --color-sec-medium: #F5F5F5;
     --color-background: #FFFFFF;
     --color-background-opaque: rgba(0, 0, 0, 0.7);
+
+    /*Font*/
     --font: 'Roboto', sans-serif;
+
+    /*Layout*/
     --header-height: 120pt;
     --border-width: 1px;
     --border-radius: 5px;
@@ -42,6 +49,15 @@ html, #root{
     height: 100%;
 }
 
+/*
+    Predefined classes that can be used to markup text
+    contains:
+       - header
+       - title
+       - body
+       - body-sec
+       - body-thr
+ */
 .text-header{
     width: 100%;
     font-size: 42pt;
@@ -95,6 +111,11 @@ html, #root{
     white-space: pre-line;
 }
 
+
+/*
+    Every page content is wrapped in a page container.
+    Set as flexbox to make markup easier.
+ */
 #page-container{
     display: flex;
     flex-direction: column;
@@ -108,6 +129,9 @@ html, #root{
     width: 100%;
 }
 
+/*
+    Horizontal and vertical flexbox classes to easily create flex-boxes
+ */
 .container-horizontal{
     display: flex;
     flex-direction: row;
@@ -132,6 +156,9 @@ html, #root{
     width: 100%;
 }
 
+/*
+    Main container in app to differentiate between the app and loading screen.
+ */
 #main-container{
     height: 100%;
     width: 100%;

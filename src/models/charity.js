@@ -1,3 +1,4 @@
+// Charity object to abstract api
 export function Charity(name, description, externalUrl, logoUrl){
     this.name = name;
     this.description = description;

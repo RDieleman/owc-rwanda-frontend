@@ -5,6 +5,7 @@ import {PaddingComponent} from "../layout/padding/padding.component";
 
 export const NewsList = ({newsItems}) => {
     return (
+        // Create a list of news items
         <div className="container-vertical">
             {newsItems.map((n, i) => {
                 return <div key={i} className="container-vertical">

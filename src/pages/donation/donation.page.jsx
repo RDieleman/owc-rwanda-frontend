@@ -8,24 +8,38 @@ import {DonationListComponent} from "../../components/donation-list/donation-lis
 import {NumBox} from "../../components/input/num-box/num-box.component";
 import {ButtonMainComponent} from "../../components/input/buttons/button-main/button-main.component";
 
+/*
+    Page used to handle choosing the donation amount.
+
+    Url will contain the id of the project the user chose to support.
+    If the user was redirect directly from the menu page there won't be an id.
+
+    The payment service is used to handle the actual payment.
+
+    After handling the payment the user will be redirected to the payment result page.
+ */
+
 class DonationPage extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            customAmount: null,
-            popupVisible: false
+            customAmount: null, //handle custom amount if needed
+            popupVisible: false //visibility status of custom amount popup
         }
     }
 
-    handleSetVisibility = (value) =>{
+    //Set the visibility status of custom amount popup
+    handleSetVisibility = (value) => {
         this.setState({popupVisible: value});
     }
 
-    handleCustomAmountChanged = (event) =>{
+    //Handle the change of the input field of the custom amount
+    handleCustomAmountChanged = (event) => {
         this.setState({customAmount: event.target.value})
     }
 
+    //Handle the payment by redirecting to the payment service
     handlePayment = (amount) => {
         import("../../services/payment.service").then(f => {
             f.handlePayment(amount);
@@ -40,38 +54,64 @@ class DonationPage extends Component {
                     <div className="container-vertical">
                         <PaddingComponent/>
                         <PaddingComponent/>
+
+                        {/*Main text*/}
                         <div className="text-body">
                             {properties.donationTextMain}
                         </div>
+
                         <PaddingComponent/>
                         <PaddingComponent/>
+
+                        {/*Secondary text*/}
                         <div className="text-body">
                             {properties.donationTextSec}
                         </div>
+
                         <PaddingComponent/>
+
+                        {/*Amount selector tool with predefined amounts*/}
                         <AmountSelectorComponent
                             amounts={properties.donationAmounts}
                             handleChoice={this.handlePayment}/>
-                            <PaddingComponent/>
-                            <ButtonThrComponent
-                                handleOnClick={() => this.handleSetVisibility(true)}
-                                content={properties.donationTextCustom}
-                                />
-                                <PaddingComponent/>
-                                <PaddingComponent/>
-                                <DonationListComponent donations={this.props.donations}/>
-                                <PaddingComponent/>
+
+                        <PaddingComponent/>
+
+                        {/*Button to open popup for custom amounts*/}
+                        <ButtonThrComponent
+                            handleOnClick={() => this.handleSetVisibility(true)}
+                            content={properties.donationTextCustom}
+                        />
+
+                        <PaddingComponent/>
+                        <PaddingComponent/>
+
+                        {/*List of the most recent donations*/}
+                        <DonationListComponent donations={this.props.donations}/>
+
+                        <PaddingComponent/>
                     </div>
+
                     <PaddingComponent/>
                 </div>
-                {(this.state.popupVisible)?
+
+                {/*Custom amount popup*/}
+                {(this.state.popupVisible) ?
+
+                    // Popup container with opaque background
                     <div className="popup">
-                        {/*Popup content*/}
+
+                        {/*The content of the popup with solid background*/}
                         <div className="popup-content-container container-horizontal">
+
                             <PaddingComponent/>
+
                             <div className="popup-content container-vertical">
+
                                 <PaddingComponent/>
                                 <PaddingComponent/>
+
+                                {/*Input field for custom amount*/}
                                 <NumBox
                                     min={0}
                                     max={Number.MAX_SAFE_INTEGER}
@@ -79,20 +119,25 @@ class DonationPage extends Component {
                                     handleInputChange={this.handleCustomAmountChanged}/>
 
                                 <PaddingComponent basis="10px"/>
+
+                                {/*Confirm button to redirect to payment service*/}
                                 <ButtonMainComponent
                                     content="Confirm"
                                     handleOnClick={() => this.handlePayment(this.state.customAmount)}
                                 />
+
                                 <PaddingComponent/>
                                 <PaddingComponent/>
+
                             </div>
+
                             <PaddingComponent/>
                         </div>
 
-                        {/*Background to close popup*/}
+                        {/*Invisible background to close the popup when user clicks the background*/}
                         <div className="popup-background"
-                        onClick={() => this.handleSetVisibility(false)}/>
-                    </div>:
+                             onClick={() => this.handleSetVisibility(false)}/>
+                    </div> :
                     ""
                 }
             </div>

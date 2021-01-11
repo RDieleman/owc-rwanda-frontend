@@ -1,3 +1,4 @@
+//Project object to abstract api
 export function Project(id, title, description, imageUrl){
     this.id = id;
     this.title = title;

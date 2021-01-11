@@ -4,6 +4,12 @@ import {Charity} from "../models/charity";
 import {Donation} from "../models/donation";
 import {NewsItem} from "../models/newsItem";
 
+/*
+    Api service that contains all the api calls to the backend.
+    The backend url and endpoints are defined in the properties file.
+
+    The retrieved data is converted to predefined models to abstract the api.
+ */
 
 export const handleGetProjects = async () =>{
     return fetch(`${properties.backendUrl}/project`)

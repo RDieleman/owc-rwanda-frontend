@@ -3,6 +3,15 @@ import {loadStripe} from "@stripe/stripe-js/pure";
 
 const stripePromise = loadStripe(properties.stripePubKey);
 
+/*
+    The Stripe payment service.
+    The handle payment function is called from the donation page with an amount.
+
+    The backend url and endpoint are defined in the properties file.
+
+    After the payment is complete the user will be redirected to an url (depending on outcome of payment) defined in the backend.
+ */
+
 export const handlePayment = async (price) => {
     //Convert to stripe price
     const stripePrice = price*100

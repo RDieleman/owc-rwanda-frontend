@@ -5,6 +5,7 @@ import {PaddingComponent} from "../layout/padding/padding.component";
 
 export const ProjectListComponent = ({projects, handleProjectSelect}) => {
 
+    // Provide list of projects with image and title
     return (
         <div className="project-list-container container-vertical">
             {projects.map(p => {
