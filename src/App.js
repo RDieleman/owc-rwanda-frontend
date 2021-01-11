@@ -19,6 +19,7 @@ import InfoPage from "./pages/info/info.page";
 import {HeaderComponent} from "./components/header/header.component";
 
 //todo: Implement SSL for production
+//todo: Implement location data request
 
 class App extends Component {
     constructor(props) {
