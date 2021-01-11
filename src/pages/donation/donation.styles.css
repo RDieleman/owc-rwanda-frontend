@@ -1,0 +1,31 @@
+.popup{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-color: var(--color-background-opaque);
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-content-container{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    background-color: var(--color-background);
+    border-radius: var(--border-radius);
+}
+
+.popup-content{
+    width: 100%;
+}
+
+.popup-background{
+    height: 100%;
+    width: 100%;
+}
+

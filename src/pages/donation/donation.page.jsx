@@ -7,16 +7,27 @@ import {AmountSelectorComponent} from "../../components/input/amount-selector/am
 import {ButtonThrComponent} from "../../components/input/buttons/button-thr/button-thr.component";
 import {DonationListComponent} from "../../components/donation-list/donation-list.component";
 import {handlePayment} from "../../services/payment.service";
+import {TextBox} from "../../components/input/text-box/text-box.component";
+import {NumBox} from "../../components/input/num-box/num-box.component";
+import {ButtonSecComponent} from "../../components/input/buttons/button-sec/button-sec.component";
+import {ButtonMainComponent} from "../../components/input/buttons/button-main/button-main.component";
 
 class DonationPage extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {}
+        this.state = {
+            customAmount: null,
+            popupVisible: false
+        }
     }
 
-    handleCustomAmountClick = () =>{
+    handleSetVisibility = (value) =>{
+        this.setState({popupVisible: value});
+    }
 
+    handleCustomAmountChanged = (event) =>{
+        this.setState({customAmount: event.target.value})
     }
 
     render() {
@@ -41,17 +52,47 @@ class DonationPage extends Component {
                             handleChoice={handlePayment}/>
                             <PaddingComponent/>
                             <ButtonThrComponent
-                                handleOnClick={this.handleCustomAmountClick}
+                                handleOnClick={() => this.handleSetVisibility(true)}
                                 content={properties.donationTextCustom}
                                 />
                                 <PaddingComponent/>
                                 <PaddingComponent/>
                                 <DonationListComponent donations={this.props.donations}/>
                                 <PaddingComponent/>
-
                     </div>
                     <PaddingComponent/>
                 </div>
+                {(this.state.popupVisible)?
+                    <div className="popup">
+                        {/*Popup content*/}
+                        <div className="popup-content-container container-horizontal">
+                            <PaddingComponent/>
+                            <div className="popup-content container-vertical">
+                                <PaddingComponent/>
+                                <PaddingComponent/>
+                                <NumBox
+                                    min={0}
+                                    max={Number.MAX_SAFE_INTEGER}
+                                    placeholder="Custom amount..."
+                                    handleInputChange={this.handleCustomAmountChanged}/>
+
+                                <PaddingComponent basis="10px"/>
+                                <ButtonMainComponent
+                                    content="Confirm"
+                                    handleOnClick={() => handlePayment(this.state.customAmount)}
+                                />
+                                <PaddingComponent/>
+                                <PaddingComponent/>
+                            </div>
+                            <PaddingComponent/>
+                        </div>
+
+                        {/*Background to close popup*/}
+                        <div className="popup-background"
+                        onClick={() => this.handleSetVisibility(false)}/>
+                    </div>:
+                    ""
+                }
             </div>
         )
     }
