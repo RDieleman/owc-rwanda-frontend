@@ -41,7 +41,7 @@ class PaymentResultPage extends Component {
             this.state.content !== "" &&
             !this.state.content.indexOf(' ') >= 0) {
 
-            //todo: implement post message endpoint
+            //todo: Implement post message endpoint
             const message = {
                 name: this.state.name,
                 content: this.state.content

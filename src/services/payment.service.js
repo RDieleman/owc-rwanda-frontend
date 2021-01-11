@@ -2,6 +2,7 @@ import {properties} from "../properties";
 import {loadStripe} from "@stripe/stripe-js/pure";
 
 const stripePromise = loadStripe(properties.stripePubKey);
+//todo: Implement stripe in backend
 
 /*
     The Stripe payment service.

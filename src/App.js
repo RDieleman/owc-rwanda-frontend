@@ -18,6 +18,8 @@ import LoadingPage from "./pages/loading/loading.page";
 import InfoPage from "./pages/info/info.page";
 import {HeaderComponent} from "./components/header/header.component";
 
+//todo: Implement SSL for production
+
 class App extends Component {
     constructor(props) {
         super(props);

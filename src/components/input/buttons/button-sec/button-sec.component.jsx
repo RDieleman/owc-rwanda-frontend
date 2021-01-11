@@ -9,7 +9,7 @@ export const ButtonSecComponent = ({content, iconLocation, handleOnClick}) =>{
             {content}
             {/*Add icon if location is included*/}
             {(iconLocation === undefined)? "" :
-                // todo: replace with svg and set color in css file
+                // todo: Replace with svg and set color in css file
                 <img src={iconLocation} alt="btn-icon"/>}
         </button>
     )
