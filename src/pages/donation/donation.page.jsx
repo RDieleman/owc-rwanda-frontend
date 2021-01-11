@@ -40,6 +40,7 @@ class DonationPage extends Component {
     }
 
     //Handle the payment by redirecting to the payment service
+    //Lazy import to prevent unneeded loading
     handlePayment = (amount) => {
         import("../../services/payment.service").then(f => {
             f.handlePayment(amount);
@@ -115,14 +116,14 @@ class DonationPage extends Component {
                                 <NumBox
                                     min={0}
                                     max={Number.MAX_SAFE_INTEGER}
-                                    placeholder="Custom amount..."
+                                    placeholder={properties.donationNumboxPlaceholder}
                                     handleInputChange={this.handleCustomAmountChanged}/>
 
                                 <PaddingComponent basis="10px"/>
 
                                 {/*Confirm button to redirect to payment service*/}
                                 <ButtonMainComponent
-                                    content="Confirm"
+                                    content={properties.donationButtonConfirm}
                                     handleOnClick={() => this.handlePayment(this.state.customAmount)}
                                 />
 

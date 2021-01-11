@@ -101,14 +101,14 @@ class PaymentResultPage extends Component {
 
                                 {/*Text field for name*/}
                                 <TextBox
-                                    placeholder="Name..."
+                                    placeholder={properties.resultTextBoxPlaceholder}
                                     handleInputChange={this.handleNameInputChange}/>
 
                                 <PaddingComponent basis="10px"/>
 
                                 {/*Text area for message*/}
                                 <TextArea
-                                    placeholder="Message..."
+                                    placeholder={properties.resultTextAreaPlaceholder}
                                     handleInputChange={this.handleMessageInputChange}/>
 
                                 <PaddingComponent/>

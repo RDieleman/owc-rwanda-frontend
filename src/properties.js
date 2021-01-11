@@ -31,6 +31,9 @@ export const properties ={
     donationAmounts: [1, 5, 10, 20, 50],
     donationTextCustom: "Enter a custom amount",
 
+    donationNumboxPlaceholder: "Custom amount...",
+    donationButtonConfirm: "Continue",
+
     //Project detail page
     detailTextBtnDonate: "Support this project",
 
@@ -41,6 +44,9 @@ export const properties ={
     resultTextSuccessMain: "Amazing!",
     resultTextSuccessSec: "Thank you for your generous support. It goes a long way in helping the youth of Rwanda.",
     resultTextSuccessThr: "Would you like to leave a message?",
+
+    resultTextBoxPlaceholder: "Name...",
+    resultTextAreaPlaceholder: "Message...",
 
     //Info & newsfeed page
     infoTextMain: "Global Radiant Youth is a nonprofit organisation based in Rwanda. We empower youth to be part of positive change through workshops, cultural exchange initiatives and sustainable development programs.",
