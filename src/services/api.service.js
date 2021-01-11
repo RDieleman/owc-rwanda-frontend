@@ -6,7 +6,6 @@ import {NewsItem} from "../models/newsItem";
 
 
 export const handleGetProjects = async () =>{
-    console.log(`Retrieving discussions...`);
     return fetch(`${properties.backendUrl}/project`)
         .then(response => response.json())
         .then(data => {
@@ -25,7 +24,6 @@ export const handleGetProjects = async () =>{
 };
 
 export const handleGetDonations = async () =>{
-    console.log(`Retrieving donations...`);
     return fetch(`${properties.backendUrl}/donation`)
         .then(response => response.json())
         .then(data => {
@@ -43,7 +41,6 @@ export const handleGetDonations = async () =>{
 };
 
 export const handleGetCharities = async () =>{
-    console.log(`Retrieving charities...`);
     return fetch(`${properties.backendUrl}/charity`)
         .then(response => response.json())
         .then(data => {
@@ -62,7 +59,6 @@ export const handleGetCharities = async () =>{
 };
 
 export const handleGetNewsItems = async () =>{
-    console.log(`Retrieving news...`);
     return fetch(`${properties.backendUrl}/news`)
         .then(response => response.json())
         .then(data => {

@@ -33,8 +33,6 @@ class PaymentResultPage extends Component {
                 name: this.state.name,
                 content: this.state.content
             }
-
-            console.log('Message to be send', message);
         }
 
         //Redirect back to menu

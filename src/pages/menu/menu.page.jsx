@@ -22,7 +22,6 @@ class MenuPage extends Component {
 
     handleDonateClick = () => {
         this.props.history.push(properties.urlDonationPage);
-        console.log("donate button clicked")
     }
 
     render() {

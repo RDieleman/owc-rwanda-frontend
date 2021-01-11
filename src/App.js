@@ -45,11 +45,8 @@ class App extends Component {
                 });
         }
 
-        console.log("Continuing");
-
         window.addEventListener("beforeinstallprompt", (event) => {
             console.log("beforeinstallprompt fired and caught", event);
-            console.log(this);
             event.preventDefault();
             this.setState({deferredPrompt: event});
             return false;
@@ -57,7 +54,6 @@ class App extends Component {
 
         //Try to load resources
         try{
-            console.log("Retrieving resources...")
             await handleGetDonations().then(d =>{
                 this.setState({donations: d});
             });
@@ -81,16 +77,12 @@ class App extends Component {
     }
 
     handleCreateInstallPrompt = () => {
-        console.log("Prompting user with install");
-
         let {deferredPrompt} = this.state;
 
         if (deferredPrompt) {
             deferredPrompt.prompt();
 
             deferredPrompt.userChoice.then((choiceResult) => {
-                console.log(choiceResult.outcome);
-
                 if (choiceResult.outcome === 'dismissed') {
                     console.log('User cancelled installation');
                 } else {
@@ -111,16 +103,12 @@ class App extends Component {
     }
 
     getProject = (id) => {
-        console.log("Project id:", id);
         return this.state.projects.find(p => {
             return p.id === 3;
         })
     }
 
     render() {
-        //Log current loading state
-        console.log("Application is loading:", this.state.isLoading)
-
         return (
             <Router>
                 <div className="App">
