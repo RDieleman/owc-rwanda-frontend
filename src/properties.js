@@ -1,5 +1,5 @@
 export const properties ={
-    backendUrl: "http://localhost:8080", //Needs to be changed manually in the caching list of the service worker
+    backendUrl: "http://localhost:8080",
     frontendUrl: "https://localhost:3000",
 
     stripePubKey: "pk_test_51HzDIHEx7DRYoqykMjKeFTWJemnHR4dUdPrIsMLqTRMh6LQ3tKtvxrZIkbeJB5BHOuAPyTVuwWKyktXnz7WTJ8IT00MrbyjVrz",

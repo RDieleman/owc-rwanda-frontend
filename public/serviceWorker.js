@@ -10,7 +10,6 @@ const cacheNameDynamic = 'dynamic';
 
 //Targets to cache in the static cache
 const cacheTargets = [
-
     "/manifest.json",
 
     "/images/icons/favicon.ico",
