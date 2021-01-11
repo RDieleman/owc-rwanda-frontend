@@ -8,9 +8,11 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+
+    padding:  calc(var(--basic-margin) * 0.3) calc(var(--basic-margin) * 1.1);
 }
 
 .button-icon > img{
-    height: 18pt;
+    height: 16pt;
     width: auto;
 }

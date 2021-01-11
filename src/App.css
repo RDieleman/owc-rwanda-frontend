@@ -53,12 +53,13 @@ html, #root{
 
 .text-title{
     width: 100%;
-    font-size: 30pt;
+    font-size: 26pt;
     font-weight: 700;
     color: var(--color-main-light);
     white-space: nowrap;
     text-align: left;
     text-decoration: none;
+    text-transform: uppercase;
 }
 
 .text-body{

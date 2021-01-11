@@ -11,8 +11,6 @@ export const HeaderComponent = ({installIsAvailable, handleInstallClicked}) => {
             <PaddingComponent basis="10px"/>
             <div className="header-content container-horizontal">
                 <PaddingComponent/>
-                <img className="header-logo" src={"/images/icons/logo.png"}/>
-                <PaddingComponent basis="10px"/>
                 <div className="header-title text-title">{properties.title}</div>
                 {(installIsAvailable) ?
                     <ButtonIconComponent
