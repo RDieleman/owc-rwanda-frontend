@@ -24,7 +24,6 @@
     --border-width: 1px;
     --border-radius: 5px;
     --basic-height: 30pt;
-    --basic-margin: 16pt;
     --border: solid var(--border-width) var(--color-sec-medium);
 }
 
@@ -60,7 +59,6 @@ html, #root{
  */
 .text-header{
     width: 100%;
-    font-size: 42pt;
     font-weight: 700;
     color: var(--color-main-dark);
     text-align: left;
@@ -69,7 +67,6 @@ html, #root{
 
 .text-title{
     width: 100%;
-    font-size: 26pt;
     font-weight: 700;
     color: var(--color-main-light);
     white-space: nowrap;
@@ -80,7 +77,6 @@ html, #root{
 
 .text-body{
     width: 100%;
-    font-size: 20pt;
     font-weight: 300;
     color: var(--color-sec-dark);
     text-align: left;
@@ -91,7 +87,6 @@ html, #root{
 
 .text-body-sec{
     width: 100%;
-    font-size: 16pt;
     font-weight: 300;
     color: var(--color-sec-dark);
     text-align: left;
@@ -102,13 +97,64 @@ html, #root{
 
 .text-body-thr{
     width: 100%;
-    font-size: 14pt;
     font-weight: 200;
     color: var(--color-sec-dark);
     text-align: left;
     text-decoration: none;
     word-wrap: break-word;
     white-space: pre-line;
+}
+
+@media screen and (max-width: 900px){
+    :root{
+        --basic-margin: 16pt;
+    }
+
+    .text-header{
+        font-size: 42pt;
+    }
+
+    .text-title{
+        font-size: 26pt;
+    }
+
+    .text-body{
+        font-size: 22pt;
+    }
+
+    .text-body-sec{
+        font-size: 16pt;
+    }
+
+    .text-body-thr{
+        font-size: 15pt;
+    }
+}
+
+@media screen and (min-width: 901px){
+    :root{
+        --basic-margin: 20pt;
+    }
+
+    .text-header{
+        font-size: 50pt;
+    }
+
+    .text-title{
+        font-size: 30pt;
+    }
+
+    .text-body{
+        font-size: 26pt;
+    }
+
+    .text-body-sec{
+        font-size: 20pt;
+    }
+
+    .text-body-thr{
+        font-size: 18pt;
+    }
 }
 
 
@@ -124,6 +170,11 @@ html, #root{
     height: 100%;
     overflow: auto;
     flex: 1;
+
+    max-width: 900px;
+    width: 100%;
+
+    align-self: center;
 }
 #page-container > div{
     width: 100%;
@@ -142,6 +193,7 @@ html, #root{
 
 .container-horizontal > div{
     height: 100%;
+    width: 100%;
 }
 
 .container-vertical{

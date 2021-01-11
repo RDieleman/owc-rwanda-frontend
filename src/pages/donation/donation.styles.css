@@ -18,8 +18,9 @@
     width: 100%;
     background-color: var(--color-background);
     border-radius: var(--border-radius);
-}
 
+    max-width: 900px;
+}
 .popup-content{
     width: 100%;
 }
