@@ -145,10 +145,10 @@ class App extends Component {
                                 <Route exact path="/" component={WelcomePage}/>
 
                                 {/*Menu page*/}
-                                <Route path={properties.urlMenuPage} component={MenuPage}/>
+                                <Route path="/menu" component={MenuPage}/>
 
                                 {/*Project overview page*/}
-                                <Route path={properties.urlProjectOverviewPage}
+                                <Route path="/projects"
                                        render={(props) => <ProjectOverviewPage
                                            projects={this.state.projects}
                                            charities={this.state.charities}
@@ -170,11 +170,11 @@ class App extends Component {
                                            {...props}/>}/>
 
                                 {/*Payment result page*/}
-                                <Route exact path={`${properties.ulrPaymentResultPage}/:result`}
+                                <Route exact path="/result/:result"
                                        component={PaymentResultPage}/>
 
                                 {/*Info and newsfeed page*/}
-                                <Route path={properties.urlInfoPage}
+                                <Route path="/info"
                                        render={(props) => <InfoPage
                                            newsItems={this.state.newsItems}
                                            {...props}/>}/>

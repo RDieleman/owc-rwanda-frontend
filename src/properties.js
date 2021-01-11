@@ -4,14 +4,6 @@ export const properties ={
 
     stripePubKey: "pk_test_51HzDIHEx7DRYoqykMjKeFTWJemnHR4dUdPrIsMLqTRMh6LQ3tKtvxrZIkbeJB5BHOuAPyTVuwWKyktXnz7WTJ8IT00MrbyjVrz",
 
-    urlWelcomePage: "/",
-    urlMenuPage: "/menu",
-    urlProjectOverviewPage: "/projects",
-    urlDonationPage: "/donation",
-    urlProjectDetailPage: "/project",
-    ulrPaymentResultPage: "/result",
-    urlInfoPage: "/info",
-
     title: "Icyotero",
     slogan: "Misfortune breeds blessings",
 
