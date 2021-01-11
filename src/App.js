@@ -6,7 +6,7 @@ import MenuPage from "./pages/menu/menu.page";
 import {properties} from "./properties";
 import ProjectOverviewPage from "./pages/project-overview/project-overview.page";
 import {
-    handleGetCharities,
+    handleGetCharities, handleGetDonations,
     handleGetNewsItems,
     handleGetProjects,
     handleGetRecentDonations
@@ -36,16 +36,16 @@ class App extends Component {
         }
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         if ('serviceWorker' in navigator) {
-            this.setState({currentlyLoading: this.state.currentlyLoading + 1}, () => {
-                navigator.serviceWorker
-                    .register("/serviceWorker.js")
-                    .then(() => {
-                        console.log("Service worker registered");
-                    });
-            });
+            await navigator.serviceWorker
+                .register("/serviceWorker.js")
+                .then(() => {
+                    console.log("Service worker registered");
+                });
         }
+
+        console.log("Continuing");
 
         window.addEventListener("beforeinstallprompt", (event) => {
             console.log("beforeinstallprompt fired and caught", event);
@@ -55,30 +55,29 @@ class App extends Component {
             return false;
         })
 
-        let projects = [];
-        let newsItems = [];
-        let donations = [];
-        let charities = [];
+        //Try to load resources
+        try{
+            console.log("Retrieving resources...")
+            await handleGetDonations().then(d =>{
+                this.setState({donations: d});
+            });
 
-        handleGetCharities().then(c =>{
-            charities = c
-            handleGetNewsItems().then(n => {
-                newsItems = n
-                handleGetRecentDonations().then(d =>{
-                    donations = d
-                    handleGetProjects().then(p =>{
-                        projects = p
-                        this.setState({
-                            projects: projects,
-                            newsItems: newsItems,
-                            donations: donations,
-                            charities: charities,
-                            isLoading: false
-                        })
-                    })
-                })
-            })
-        })
+            await handleGetCharities().then(c =>{
+                this.setState({charities: c})
+            });
+
+            await handleGetNewsItems().then(n =>{
+                this.setState({newsItems: n})
+            });
+
+            await handleGetProjects().then(p =>{
+                this.setState({projects: p})
+            });
+
+        //Always disable loading
+        }finally {
+            this.setState({isLoading: false});
+        }
     }
 
     handleCreateInstallPrompt = () => {

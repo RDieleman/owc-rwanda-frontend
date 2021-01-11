@@ -1,26 +1,17 @@
 import {properties} from "../properties";
-import axios from "axios";
 import {Project} from "../models/project";
 import {Charity} from "../models/charity";
 import {Donation} from "../models/donation";
 import {NewsItem} from "../models/newsItem";
 
-const AXIOS = axios.create({
-    baseURL: properties.backendUrl,
-    mode: 'cors',
-    headers:{
-        'Access-Control-Allow-Origin': properties.frontendUrl,
-        'Content-type': 'application/json'
-    }
-});
 
-export const handleGetProjects = () =>{
+export const handleGetProjects = async () =>{
     console.log(`Retrieving discussions...`);
-    return AXIOS.get(`/project`)
-        .then(response =>{
-
+    return fetch(`${properties.backendUrl}/project`)
+        .then(response => response.json())
+        .then(data => {
             const projects = [];
-            response.data.forEach(p =>{
+            data.forEach(p => {
                 projects.push(new Project(
                     p.id,
                     p.title,
@@ -28,19 +19,36 @@ export const handleGetProjects = () =>{
                     p.image_url
                 ))
             })
-
             console.log("Projects", projects);
             return projects;
-        });
+        })
 };
 
-export const handleGetCharities = () =>{
-    console.log(`Retrieving charities...`);
-    return AXIOS.get(`/charity`)
-        .then(response =>{
+export const handleGetDonations = async () =>{
+    console.log(`Retrieving donations...`);
+    return fetch(`${properties.backendUrl}/donation`)
+        .then(response => response.json())
+        .then(data => {
+            const donations = [];
+            data.forEach(d => {
+                donations.push(new Donation(
+                    d.name,
+                    d.message,
+                    d.amount,
+                ))
+            })
+            console.log("Donations", donations);
+            return donations;
+        })
+};
 
+export const handleGetCharities = async () =>{
+    console.log(`Retrieving charities...`);
+    return fetch(`${properties.backendUrl}/charity`)
+        .then(response => response.json())
+        .then(data => {
             const charities = [];
-            response.data.forEach(c =>{
+            data.forEach(c => {
                 charities.push(new Charity(
                     c.name,
                     c.description,
@@ -48,48 +56,26 @@ export const handleGetCharities = () =>{
                     c.logo_url
                 ))
             })
-
-            console.log('Charities', charities);
-
+            console.log("Charities", charities);
             return charities;
         })
 };
 
-export const handleGetRecentDonations = () =>{
-    console.log(`Retrieving recent donations...`);
-    return AXIOS.get(`/donation`)
-        .then(response =>{
-            const donations = [];
-
-            response.data.forEach(d => {
-                donations.push(new Donation(
-                    d.name,
-                    d.message,
-                    d.amount,
-                ))
-            })
-
-            console.log('Donations', donations);
-            return donations;
-        });
-};
-
-export const handleGetNewsItems = () =>{
-    console.log("Retrieving news items...");
-    return AXIOS.get('/news')
-        .then(response =>{
-
+export const handleGetNewsItems = async () =>{
+    console.log(`Retrieving news...`);
+    return fetch(`${properties.backendUrl}/news`)
+        .then(response => response.json())
+        .then(data => {
             const newsItems = [];
-            response.data.forEach(n => {
+            data.forEach(n => {
                 newsItems.push(new NewsItem(
                     n.title,
                     n.description,
                     n.image_url,
                     n.external_url
                 ))
-            });
-
-            console.log('News', newsItems);
+            })
+            console.log("News Items", newsItems);
             return newsItems;
         })
-}
+};
