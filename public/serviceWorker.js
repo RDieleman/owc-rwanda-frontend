@@ -23,6 +23,13 @@ const cacheTargets = [
     "/images/icons/icon-skip.svg",
     "/images/icons/pwa-192x192.png",
     "/images/icons/pwa-512x512.png",
+    "/images/icons/maskable_icon_x72.png",
+    "/images/icons/maskable_icon_x96.png",
+    "/images/icons/maskable_icon_x128.png",
+    "/images/icons/maskable_icon_x144.png",
+    "/images/icons/maskable_icon_x152.png",
+    "/images/icons/maskable_icon_x384.png",
+    "/images/icons/maskable_icon_x512.png",
     "/images/icons/icon-install.svg",
     "/images/placeholder-image.png",
     "/logo.svg",
@@ -35,8 +42,7 @@ const cacheTargets = [
     "/menu",
     "/projects",
     "/project",
-    "/result",
-    "/donation"
+    "/result"
 ];
 
 // Service worker install event

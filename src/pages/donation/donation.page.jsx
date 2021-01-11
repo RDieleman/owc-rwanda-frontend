@@ -7,7 +7,6 @@ import {ButtonThrComponent} from "../../components/input/buttons/button-thr/butt
 import {DonationListComponent} from "../../components/donation-list/donation-list.component";
 import {NumBox} from "../../components/input/num-box/num-box.component";
 import {ButtonMainComponent} from "../../components/input/buttons/button-main/button-main.component";
-import {handlePayment} from "../../services/payment.service";
 
 class DonationPage extends Component {
     constructor(props) {
@@ -25,6 +24,12 @@ class DonationPage extends Component {
 
     handleCustomAmountChanged = (event) =>{
         this.setState({customAmount: event.target.value})
+    }
+
+    handlePayment = (amount) => {
+        import("../../services/payment.service").then(f => {
+            f.handlePayment(amount);
+        });
     }
 
     render() {
@@ -46,7 +51,7 @@ class DonationPage extends Component {
                         <PaddingComponent/>
                         <AmountSelectorComponent
                             amounts={properties.donationAmounts}
-                            handleChoice={handlePayment}/>
+                            handleChoice={this.handlePayment}/>
                             <PaddingComponent/>
                             <ButtonThrComponent
                                 handleOnClick={() => this.handleSetVisibility(true)}
@@ -76,7 +81,7 @@ class DonationPage extends Component {
                                 <PaddingComponent basis="10px"/>
                                 <ButtonMainComponent
                                     content="Confirm"
-                                    handleOnClick={() => handlePayment(this.state.customAmount)}
+                                    handleOnClick={() => this.handlePayment(this.state.customAmount)}
                                 />
                                 <PaddingComponent/>
                                 <PaddingComponent/>
