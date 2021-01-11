@@ -42,6 +42,7 @@ class PaymentResultPage extends Component {
             !this.state.content.indexOf(' ') >= 0) {
 
             //todo: Implement post message endpoint
+            //todo: Implement post message system so user actually has to donate to post
             const message = {
                 name: this.state.name,
                 content: this.state.content
